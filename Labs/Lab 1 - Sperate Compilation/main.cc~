@@ -1,6 +1,12 @@
 #include "lab1.h"
 const int MAX_SIZE = 100000;
 
+int readData(int data[], int n);
+
+void sortData(int data[], int n);
+
+void printData(int data[], int n);
+
 int main(void) {
   int data[MAX_SIZE],nItems;
 

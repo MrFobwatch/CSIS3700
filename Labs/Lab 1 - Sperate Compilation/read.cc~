@@ -1,4 +1,7 @@
 #include "lab1.h"
+#include <iostream>
+
+using namespace std;
 
 int readData(int data[],int maxItems) {
   int i=0,item;

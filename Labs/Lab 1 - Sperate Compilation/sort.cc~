@@ -3,7 +3,7 @@ void recursiveSort(int data[],int start,int end) {
   int i,tmp,bdy=start;
 
   if (start < end) {
-    for (i=start+1;i<=end;i++)
+    for (i=start+1;i<end;i++)
       if (data[i] < data[start]) {
         bdy++;
         tmp = data[bdy];
