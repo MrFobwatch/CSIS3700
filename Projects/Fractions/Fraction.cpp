@@ -26,67 +26,79 @@ void Fraction::setFrac(int numer, int denom) {
 
 }
 
-Fraction Fraction::operator+(const Fraction &fraction) {
+Fraction Fraction::operator+(const Fraction &fraction1, const Fraction &fraction2) {
+    int numerResult,denomResult;
+    numerResult = fraction1.numer + fraction2.numer;
+    denomResult = fraction1.denom + fraction2.denom;
+    return Fraction(numerResult, denomResult);
+}
+
+Fraction Fraction::operator-(const Fraction &fraction1, const Fraction &fraction2) {
+    int numerResult,denomResult;
+    numerResult = fraction1.numer - fraction2.numer;
+    denomResult = fraction1.denom - fraction2.denom;
+    return Fraction(numerResult, denomResult);
+}
+
+Fraction Fraction::operator*(const Fraction &fraction1, const Fraction &fraction2) {
+    int numerResult,denomResult;
+    numerResult = fraction1.numer * fraction2.numer;
+    denomResult = fraction1.denom * fraction2.denom;
+    return Fraction(numerResult, denomResult);
+}
+
+Fraction Fraction::operator/(const Fraction &fraction1, const Fraction &fraction2) {
+    int numerResult,denomResult;
+    numerResult = fraction1.numer * fraction2.denom;
+    denomResult = fraction1.denom * fraction2.numer;
+    return Fraction(numerResult, denomResult);
+}
+
+Fraction Fraction::operator<(const Fraction &fraction1, const Fraction &fraction2) {
     return Fraction();
 }
 
-Fraction Fraction::operator-(const Fraction &fraction) {
+Fraction Fraction::operator>(const Fraction &fraction1, const Fraction &fraction2) {
     return Fraction();
 }
 
-Fraction Fraction::operator*(const Fraction &fraction) {
+Fraction Fraction::operator<=(const Fraction &fraction1, const Fraction &fraction2) {
     return Fraction();
 }
 
-Fraction Fraction::operator/(const Fraction &fraction) {
+Fraction Fraction::operator>=(const Fraction &fraction1, const Fraction &fraction2) {
     return Fraction();
 }
 
-Fraction Fraction::operator<(const Fraction &fraction) {
+Fraction Fraction::operator==(const Fraction &fraction1, const Fraction &fraction2) {
     return Fraction();
 }
 
-Fraction Fraction::operator>(const Fraction &fraction) {
+Fraction Fraction::operator!=(const Fraction &fraction1, const Fraction &fraction2) {
     return Fraction();
 }
 
-Fraction Fraction::operator<=(const Fraction &fraction) {
+Fraction Fraction::operator<(const Fraction &fraction, const int n) {
     return Fraction();
 }
 
-Fraction Fraction::operator>=(const Fraction &fraction) {
+Fraction Fraction::operator>(const Fraction &fraction, const int n) {
     return Fraction();
 }
 
-Fraction Fraction::operator==(const Fraction &fraction) {
+Fraction Fraction::operator<=(const Fraction &fraction, const int n) {
     return Fraction();
 }
 
-Fraction Fraction::operator!=(const Fraction &fraction) {
+Fraction Fraction::operator>=(const Fraction &fraction, const int n) {
     return Fraction();
 }
 
-Fraction Fraction::operator<(const int &n) {
+Fraction Fraction::operator==(const Fraction &fraction, const int n) {
     return Fraction();
 }
 
-Fraction Fraction::operator>(const int &n) {
-    return Fraction();
-}
-
-Fraction Fraction::operator<=(const int &n) {
-    return Fraction();
-}
-
-Fraction Fraction::operator>=(const int &n) {
-    return Fraction();
-}
-
-Fraction Fraction::operator==(const int &n) {
-    return Fraction();
-}
-
-Fraction Fraction::operator!=(const int &n) {
+Fraction Fraction::operator!=(const Fraction &fraction, const int n) {
     return Fraction();
 }
 
