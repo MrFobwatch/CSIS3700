@@ -29,21 +29,19 @@ Fraction Point::operator*(const Point& point1, const Point& point2) {    //Perfo
     return cross;
 }
 
-Point Point::operator*(const Point& point, const Fraction &fraction) {
+Point Point::operator*(const Point& point, const Fraction& fraction) {
     Fraction productx;
     Fraction producty;
-    Point product(productx,producty);
-    product.x = point.x * fraction;
-    product.y = point.y * fraction;
-
-    return Point(Fraction(), Fraction());
+    productx = point.x * fraction;
+    producty = point.y * fraction;
+    return Point(productx, producty);
 }
 
 std::istream &operator>>(std::istream &, Point &) {
     return <#initializer#>;
 }
 
-std::ostream &operator<<(std::ostream &out, const Point &point) {
+std::ostream &operator<<(std::ostream& out, const Point& point) {
     out << point.x << "," << point.y;
     return out;
 }

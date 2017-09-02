@@ -14,10 +14,9 @@ public:
     Point operator+(const Point& point1, const Point& point2);
     Point operator-(const Point& point1, const Point& point2);
     Fraction operator*(const Point& point1, const Point& point2);
-    Point operator*(const Point& point, const Fraction &fraction);
+    Point operator*(const Point& point, const Fraction& fraction);
     friend std::istream &operator>>(std::istream &, Point &);
-    friend std::ostream &operator<<(std::ostream &, const Point &);
-
+    friend std::ostream &operator<<(std::ostream& out, const Point& point);
 
 private:
     Fraction x;
