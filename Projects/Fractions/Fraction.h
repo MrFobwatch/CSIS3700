@@ -10,7 +10,7 @@
 class Fraction {
 public:
     Fraction();
-    Fraction(int numer);
+    explicit Fraction(int numer);
     Fraction(int numer, int denom);
     int getNumer() const;
     void setNumer(int numer);
@@ -20,6 +20,7 @@ public:
     void setFrac(int numer);
     void setFrac(int numer, int denom);
     //void FractionEquals(); //Replace with Operator assignment
+    Fraction operator=(const Fraction &fraction);
     friend std::istream& operator>>(std::istream &ins, Fraction &fraction);
     friend std::ostream& operator<<(std::ostream &out, const Fraction &fraction);
 
@@ -28,7 +29,7 @@ private:
     int denom;
 };
 
-Fraction operator+(const Fraction &fraction, const Fraction &fraction2);
+Fraction operator+(const Fraction &fraction1, const Fraction &fraction2);
 Fraction operator-(const Fraction &fraction1, const Fraction &fraction2);
 Fraction operator*(const Fraction &fraction1, const Fraction &fraction2);
 Fraction operator/(const Fraction &fraction1, const Fraction &fraction2);
@@ -38,11 +39,11 @@ Fraction operator<=(const Fraction &fraction1, const Fraction &fraction2);
 Fraction operator>=(const Fraction &fraction1, const Fraction &fraction2);
 Fraction operator==(const Fraction &fraction1, const Fraction &fraction2);
 Fraction operator!=(const Fraction &fraction1, const Fraction &fraction2);
-Fraction operator<(const Fraction &fraction, const int n);
-Fraction operator>(const Fraction &fraction, const int n);
-Fraction operator<=(const Fraction &fraction, const int n);
-Fraction operator>=(const Fraction &fraction, const int n);
-Fraction operator==(const Fraction &fraction, const int n);
+Fraction operator<(const Fraction &fraction, int n);
+Fraction operator>(const Fraction &fraction, int n);
+Fraction operator<=(const Fraction &fraction, int n);
+Fraction operator>=(const Fraction &fraction, int n);
+Fraction operator==(const Fraction &fraction, int n);
 
 
 #endif //FRACTIONS_FRACTION_H

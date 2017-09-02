@@ -49,6 +49,11 @@ void Fraction::setFrac(int numer, int denom) {
     setDenom(denom);
 }
 
+Fraction Fraction::operator=(const Fraction &fraction) {
+    numer = fraction.numer;
+    denom = fraction.denom;
+}
+
 Fraction operator+(const Fraction &fraction1, const Fraction &fraction2) {
     int numerResult,denomResult;
     numerResult = fraction1.getNumer() + fraction2.getNumer();
