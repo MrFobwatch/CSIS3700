@@ -5,36 +5,51 @@
 #include "Point.h"
 
 Point::Point(Fraction x, Fraction y) {
-    this->x=x;
-    this->y=y;
+    setX(x);
+    setY(y);
+}
+
+const Fraction &Point::getX() const {
+    return xRes;
+}
+
+void Point::setX(const Fraction &x) {
+    Point::xRes = x;
+}
+
+const Fraction &Point::getY() const {
+    return y;
+}
+
+void Point::setY(const Fraction &y) {
+    Point::y = y;
 }
 
 Point operator+(const Point& point1, const Point& point2) {
-    Fraction xsum,ysum;
-    xsum = point1.x + point2.x;
-    ysum = point1.y + point2.y;
-    return Point(xsum, ysum);
+    Fraction xRes,yRes;
+    xRes = point1.getX() + point2.getX();
+    yRes = point1.getY() + point2.getY();
+    return Point(xRes, yRes);
 }
 
 Point operator-(const Point& point1, const Point& point2) {
-    Fraction xdiff,ydiff;
-    xdiff = point1.x + point2.x;
-    ydiff = point1.y + point2.y;
-    return Point(xdiff, ydiff);
+    Fraction xRes,yRes;
+    xRes = point1.getX() - point2.getX();
+    yRes = point1.getY() - point2.getY();
+    return Point(xRes, yRes);
 }
 
 Fraction operator*(const Point& point1, const Point& point2) {    //Performs the cross product
     Fraction cross;
-    cross = (point1.x * point2.y) - (point1.y * point2.x);
+    cross = (point1.getX() * point2.getY()) - (point1.getY() * point2.getX());
     return cross;
 }
 
 Point operator*(const Point& point, const Fraction& fraction) {
-    Fraction productx;
-    Fraction producty;
-    productx = point.x * fraction;
-    producty = point.y * fraction;
-    return Point(productx, producty);
+    Fraction xRes,yRes;
+    xRes = point.getX() * fraction;
+    yRes = point.getY() * fraction;
+    return Point(xRes, yRes);
 }
 
 //std::istream &operator>>(std::istream &, Point &) {

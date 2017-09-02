@@ -13,10 +13,13 @@ public:
     Point(Fraction x, Fraction y);
     //friend std::istream &operator>>(std::istream &, Point &);
     //friend std::ostream &operator<<(std::ostream& out, const Point& point);
-    Fraction x;
-    Fraction y;
-private:
+    const Fraction &getX() const;
+    void setX(const Fraction &x);
+    const Fraction &getY() const;
+    void setY(const Fraction &y);
 
+private:
+    Fraction xRes,y;
 };
 
 Point operator+(const Point &point1, const Point &point2);
