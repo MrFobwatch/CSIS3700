@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Fractions.dir/main.cpp.obj"
   "CMakeFiles/Fractions.dir/Fraction.cpp.obj"
+  "CMakeFiles/Fractions.dir/Point.cpp.obj"
   "Fractions.pdb"
   "Fractions.exe"
   "Fractions.exe.manifest"

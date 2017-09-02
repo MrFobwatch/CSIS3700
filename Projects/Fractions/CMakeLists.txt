@@ -3,5 +3,5 @@ project(Fractions)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp Fraction.cpp Fraction.h)
+set(SOURCE_FILES main.cpp Fraction.cpp Fraction.h Point.cpp Point.h)
 add_executable(Fractions ${SOURCE_FILES})

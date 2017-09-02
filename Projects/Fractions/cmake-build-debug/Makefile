@@ -47,10 +47,10 @@ RM = C:\Users\Kevin\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\172.3968.17\
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Kevin\Git\CSIS3700\Projects\Fractions
+CMAKE_SOURCE_DIR = D:\Kevin\Git\CSIS3700\Projects\Fractions
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug
+CMAKE_BINARY_DIR = D:\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -79,9 +79,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug\CMakeFiles C:\Users\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug\CMakeFiles D:\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -149,6 +149,33 @@ Fraction.cpp.s:
 	$(MAKE) -f CMakeFiles\Fractions.dir\build.make CMakeFiles/Fractions.dir/Fraction.cpp.s
 .PHONY : Fraction.cpp.s
 
+Point.obj: Point.cpp.obj
+
+.PHONY : Point.obj
+
+# target to build an object file
+Point.cpp.obj:
+	$(MAKE) -f CMakeFiles\Fractions.dir\build.make CMakeFiles/Fractions.dir/Point.cpp.obj
+.PHONY : Point.cpp.obj
+
+Point.i: Point.cpp.i
+
+.PHONY : Point.i
+
+# target to preprocess a source file
+Point.cpp.i:
+	$(MAKE) -f CMakeFiles\Fractions.dir\build.make CMakeFiles/Fractions.dir/Point.cpp.i
+.PHONY : Point.cpp.i
+
+Point.s: Point.cpp.s
+
+.PHONY : Point.s
+
+# target to generate assembly for a file
+Point.cpp.s:
+	$(MAKE) -f CMakeFiles\Fractions.dir\build.make CMakeFiles/Fractions.dir/Point.cpp.s
+.PHONY : Point.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -188,6 +215,9 @@ help:
 	@echo ... Fraction.obj
 	@echo ... Fraction.i
 	@echo ... Fraction.s
+	@echo ... Point.obj
+	@echo ... Point.i
+	@echo ... Point.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
