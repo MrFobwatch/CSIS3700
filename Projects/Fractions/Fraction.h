@@ -16,15 +16,16 @@ public:
     void setNumer(int numer);
     int getDenom() const;
     void setDenom(int denom);
+    void setFrac();
+    void setFrac(int numer);
     void setFrac(int numer, int denom);
-    void FractionEquals();
+    //void FractionEquals(); //Replace with Operator assignment
+    friend std::istream& operator>>(std::istream &ins, Fraction &fraction);
+    friend std::ostream& operator<<(std::ostream &out, const Fraction &fraction);
 
-    //friend std::istream& operator»(std::istream &, Fraction &);
-    //friend std::ostream& operator«(std::ostream &, const Fraction &);
+private:
     int numer;
     int denom;
-private:
-
 };
 
 Fraction operator+(const Fraction &fraction, const Fraction &fraction2);

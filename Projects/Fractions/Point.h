@@ -11,15 +11,14 @@
 class Point {
 public:
     Point(Fraction x, Fraction y);
-    //friend std::istream &operator>>(std::istream &, Point &);
-    //friend std::ostream &operator<<(std::ostream& out, const Point& point);
     const Fraction &getX() const;
     void setX(const Fraction &x);
     const Fraction &getY() const;
     void setY(const Fraction &y);
-
+    friend std::istream& operator>>(std::istream &ins, Point &point);
+    friend std::ostream& operator<<(std::ostream &out, const Point &point);
 private:
-    Fraction xRes,y;
+    Fraction x,y;
 };
 
 Point operator+(const Point &point1, const Point &point2);

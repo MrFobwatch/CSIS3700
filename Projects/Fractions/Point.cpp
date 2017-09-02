@@ -10,11 +10,11 @@ Point::Point(Fraction x, Fraction y) {
 }
 
 const Fraction &Point::getX() const {
-    return xRes;
+    return x;
 }
 
 void Point::setX(const Fraction &x) {
-    Point::xRes = x;
+    Point::x = x;
 }
 
 const Fraction &Point::getY() const {
@@ -52,11 +52,12 @@ Point operator*(const Point& point, const Fraction& fraction) {
     return Point(xRes, yRes);
 }
 
-//std::istream &operator>>(std::istream &, Point &) {
-//    return <#initializer#>;
-//}
-//
-//std::ostream &operator<<(std::ostream& out, const Point& point) {
-//    out << point.x << "," << point.y;
-//    return out;
-//}
+std::istream &operator>>(std::istream &ins, Point &point) {
+    ins >> point.x >>point.y;
+    return ins;
+}
+
+std::ostream &operator<<(std::ostream& out, const Point& point) {
+    out << point.x << "," << point.y;
+    return out;
+}
