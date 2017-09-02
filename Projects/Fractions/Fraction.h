@@ -12,30 +12,36 @@ public:
     Fraction();
     Fraction(int numer);
     Fraction(int numer, int denom);
+    int getNumer() const;
+    void setNumer(int numer);
+    int getDenom() const;
+    void setDenom(int denom);
     void setFrac(int numer, int denom);
     void FractionEquals();
-    Fraction operator+(const Fraction &fraction1, const Fraction &fraction2);
-    Fraction operator-(const Fraction &fraction1, const Fraction &fraction2);
-    Fraction operator*(const Fraction &fraction1, const Fraction &fraction2);
-    Fraction operator/(const Fraction &fraction1, const Fraction &fraction2);
-    Fraction operator<(const Fraction &fraction1, const Fraction &fraction2);
-    Fraction operator>(const Fraction &fraction1, const Fraction &fraction2);
-    Fraction operator<=(const Fraction &fraction1, const Fraction &fraction2);
-    Fraction operator>=(const Fraction &fraction1, const Fraction &fraction2);
-    Fraction operator==(const Fraction &fraction1, const Fraction &fraction2);
-    Fraction operator!=(const Fraction &fraction1, const Fraction &fraction2);
-    Fraction operator<(const Fraction &fraction, const int n);
-    Fraction operator>(const Fraction &fraction, const int n);
-    Fraction operator<=(const Fraction &fraction, const int n);
-    Fraction operator>=(const Fraction &fraction, const int n);
-    Fraction operator==(const Fraction &fraction, const int n);
-    friend std::istream& operator»(std::istream &, Fraction &);
-    friend std::ostream& operator«(std::ostream &, const Fraction &);
 
-private:
+    //friend std::istream& operator»(std::istream &, Fraction &);
+    //friend std::ostream& operator«(std::ostream &, const Fraction &);
     int numer;
     int denom;
+private:
+
 };
+
+Fraction operator+(const Fraction &fraction, const Fraction &fraction2);
+Fraction operator-(const Fraction &fraction1, const Fraction &fraction2);
+Fraction operator*(const Fraction &fraction1, const Fraction &fraction2);
+Fraction operator/(const Fraction &fraction1, const Fraction &fraction2);
+Fraction operator<(const Fraction &fraction1, const Fraction &fraction2);
+Fraction operator>(const Fraction &fraction1, const Fraction &fraction2);
+Fraction operator<=(const Fraction &fraction1, const Fraction &fraction2);
+Fraction operator>=(const Fraction &fraction1, const Fraction &fraction2);
+Fraction operator==(const Fraction &fraction1, const Fraction &fraction2);
+Fraction operator!=(const Fraction &fraction1, const Fraction &fraction2);
+Fraction operator<(const Fraction &fraction, const int n);
+Fraction operator>(const Fraction &fraction, const int n);
+Fraction operator<=(const Fraction &fraction, const int n);
+Fraction operator>=(const Fraction &fraction, const int n);
+Fraction operator==(const Fraction &fraction, const int n);
 
 
 #endif //FRACTIONS_FRACTION_H

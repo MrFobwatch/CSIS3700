@@ -18,6 +18,22 @@ Fraction::Fraction(int numer, int denom){
     this->denom=denom;
 }
 
+int Fraction::getNumer() const {
+    return numer;
+}
+
+void Fraction::setNumer(int numer) {
+    Fraction::numer = numer;
+}
+
+int Fraction::getDenom() const {
+    return denom;
+}
+
+void Fraction::setDenom(int denom) {
+    Fraction::denom = denom;
+}
+
 void Fraction::FractionEquals() {
 
 }
@@ -26,79 +42,79 @@ void Fraction::setFrac(int numer, int denom) {
 
 }
 
-Fraction Fraction::operator+(const Fraction &fraction1, const Fraction &fraction2) {
+Fraction operator+(const Fraction &fraction1, const Fraction &fraction2) {
     int numerResult,denomResult;
     numerResult = fraction1.numer + fraction2.numer;
     denomResult = fraction1.denom + fraction2.denom;
     return Fraction(numerResult, denomResult);
 }
 
-Fraction Fraction::operator-(const Fraction &fraction1, const Fraction &fraction2) {
+Fraction operator-(const Fraction &fraction1, const Fraction &fraction2) {
     int numerResult,denomResult;
     numerResult = fraction1.numer - fraction2.numer;
     denomResult = fraction1.denom - fraction2.denom;
     return Fraction(numerResult, denomResult);
 }
 
-Fraction Fraction::operator*(const Fraction &fraction1, const Fraction &fraction2) {
+Fraction operator*(const Fraction &fraction1, const Fraction &fraction2) {
     int numerResult,denomResult;
     numerResult = fraction1.numer * fraction2.numer;
     denomResult = fraction1.denom * fraction2.denom;
     return Fraction(numerResult, denomResult);
 }
 
-Fraction Fraction::operator/(const Fraction &fraction1, const Fraction &fraction2) {
+Fraction operator/(const Fraction &fraction1, const Fraction &fraction2) {
     int numerResult,denomResult;
     numerResult = fraction1.numer * fraction2.denom;
     denomResult = fraction1.denom * fraction2.numer;
     return Fraction(numerResult, denomResult);
 }
 
-Fraction Fraction::operator<(const Fraction &fraction1, const Fraction &fraction2) {
+Fraction operator<(const Fraction &fraction1, const Fraction &fraction2) {
     return Fraction();
 }
 
-Fraction Fraction::operator>(const Fraction &fraction1, const Fraction &fraction2) {
+Fraction operator>(const Fraction &fraction1, const Fraction &fraction2) {
     return Fraction();
 }
 
-Fraction Fraction::operator<=(const Fraction &fraction1, const Fraction &fraction2) {
+Fraction operator<=(const Fraction &fraction1, const Fraction &fraction2) {
     return Fraction();
 }
 
-Fraction Fraction::operator>=(const Fraction &fraction1, const Fraction &fraction2) {
+Fraction operator>=(const Fraction &fraction1, const Fraction &fraction2) {
     return Fraction();
 }
 
-Fraction Fraction::operator==(const Fraction &fraction1, const Fraction &fraction2) {
+Fraction operator==(const Fraction &fraction1, const Fraction &fraction2) {
     return Fraction();
 }
 
-Fraction Fraction::operator!=(const Fraction &fraction1, const Fraction &fraction2) {
+Fraction operator!=(const Fraction &fraction1, const Fraction &fraction2) {
     return Fraction();
 }
 
-Fraction Fraction::operator<(const Fraction &fraction, const int n) {
+Fraction operator<(const Fraction &fraction, const int n) {
     return Fraction();
 }
 
-Fraction Fraction::operator>(const Fraction &fraction, const int n) {
+Fraction operator>(const Fraction &fraction, const int n) {
     return Fraction();
 }
 
-Fraction Fraction::operator<=(const Fraction &fraction, const int n) {
+Fraction operator<=(const Fraction &fraction, const int n) {
     return Fraction();
 }
 
-Fraction Fraction::operator>=(const Fraction &fraction, const int n) {
+Fraction operator>=(const Fraction &fraction, const int n) {
     return Fraction();
 }
 
-Fraction Fraction::operator==(const Fraction &fraction, const int n) {
+Fraction operator==(const Fraction &fraction, const int n) {
     return Fraction();
 }
 
-Fraction Fraction::operator!=(const Fraction &fraction, const int n) {
+Fraction operator!=(const Fraction &fraction, const int n) {
     return Fraction();
 }
 
@@ -107,7 +123,7 @@ std::istream &operator>>(std::istream &, Fraction &){
 }
 
 std::ostream &operator<<(std::ostream &out, const Fraction &fraction) {
-    out << fraction.numer << "/" << fraction.denom;
+    out << fraction.getNumer() << "/" << fraction.getDenom();
     return out;
 }
 
