@@ -82,52 +82,72 @@ Fraction operator/(const Fraction &fraction1, const Fraction &fraction2) {
     return Fraction(numerResult, denomResult);
 }
 
-Fraction operator<(const Fraction &fraction1, const Fraction &fraction2) {
-    return Fraction();
+bool operator<(const Fraction &fraction1, const Fraction &fraction2) {
+    bool lessthan = false;
+    if ((fraction1.getNumer() / fraction2.getDenom()) < (fraction2.getNumer() / fraction2.getDenom())) {
+        lessthan = true;
+    }
+    return lessthan;
 }
 
-Fraction operator>(const Fraction &fraction1, const Fraction &fraction2) {
-    return Fraction();
+bool operator>(const Fraction &fraction1, const Fraction &fraction2) {
+    bool greatthan = false;
+    if ((fraction1.getNumer() / fraction2.getDenom()) < (fraction2.getNumer() / fraction2.getDenom())) {
+        greatthan = true;
+    }
+    return greatthan;
 }
 
-Fraction operator<=(const Fraction &fraction1, const Fraction &fraction2) {
-    return Fraction();
+bool operator<=(const Fraction &fraction1, const Fraction &fraction2) {
+    bool lessequal = false;
+    return lessequal;
 }
 
-Fraction operator>=(const Fraction &fraction1, const Fraction &fraction2) {
-    return Fraction();
+bool operator>=(const Fraction &fraction1, const Fraction &fraction2) {
+    bool greatequal = false;
+    return greatequal;
 }
 
-Fraction operator==(const Fraction &fraction1, const Fraction &fraction2) {
-    return Fraction();
+bool operator==(const Fraction &fraction1, const Fraction &fraction2) {
+    bool lessequal = false;
+    return lessequal;
 }
 
-Fraction operator!=(const Fraction &fraction1, const Fraction &fraction2) {
-    return Fraction();
+bool operator!=(const Fraction &fraction1, const Fraction &fraction2) {
+    bool lessequal = false;
+    return lessequal;
 }
 
-Fraction operator<(const Fraction &fraction, const int n) {
-    return Fraction();
+bool operator<(const Fraction &fraction, const int n) {
+    bool lessequal = false;
+    return lessequal;
 }
 
-Fraction operator>(const Fraction &fraction, const int n) {
-    return Fraction();
+bool operator>(const Fraction &fraction, const int n) {
+    bool lessequal = false;
+    return lessequal;
 }
 
-Fraction operator<=(const Fraction &fraction, const int n) {
-    return Fraction();
+bool operator<=(const Fraction &fraction, const int n) {
+    bool lessequal = false;
+    return lessequal;
 }
 
-Fraction operator>=(const Fraction &fraction, const int n) {
-    return Fraction();
+bool operator>=(const Fraction &fraction, const int n) {
+    bool lessequal = false;
+    return lessequal;
 }
 
-Fraction operator==(const Fraction &fraction, const int n) {
-    return Fraction();
+bool operator==(const Fraction &fraction, const int n) {
+    bool equal = false;
+    if ((fraction.getNumer()/fraction.getDenom()) == n) {
+        equal = true;
+    }
+    return equal;
 }
 
-Fraction operator!=(const Fraction &fraction, const int n) {
-    return Fraction();
+bool operator!=(const Fraction &fraction, const int n) {
+    return !(fraction == n);
 }
 
 std::istream &operator>>(std::istream &ins, Fraction &fraction){
