@@ -47,10 +47,10 @@ RM = C:\Users\Kevin\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\172.3968.17\
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Kevin\Git\CSIS3700\Projects\Fractions
+CMAKE_SOURCE_DIR = D:\Kevin\Git\CSIS3700\Projects\Fractions
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug
+CMAKE_BINARY_DIR = D:\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -79,9 +79,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug\CMakeFiles C:\Users\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug\CMakeFiles D:\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target

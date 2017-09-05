@@ -92,7 +92,7 @@ bool operator<(const Fraction &fraction1, const Fraction &fraction2) {
 
 bool operator>(const Fraction &fraction1, const Fraction &fraction2) {
     bool greatthan = false;
-    if ((fraction1.getNumer() / fraction2.getDenom()) < (fraction2.getNumer() / fraction2.getDenom())) {
+    if ((fraction1.getNumer() / fraction2.getDenom()) > (fraction2.getNumer() / fraction2.getDenom())) {
         greatthan = true;
     }
     return greatthan;
@@ -100,42 +100,62 @@ bool operator>(const Fraction &fraction1, const Fraction &fraction2) {
 
 bool operator<=(const Fraction &fraction1, const Fraction &fraction2) {
     bool lessequal = false;
+    if ((fraction1 < fraction2) || (fraction1 == fraction2)) {
+        lessequal = true;
+    }
     return lessequal;
 }
 
 bool operator>=(const Fraction &fraction1, const Fraction &fraction2) {
     bool greatequal = false;
+    if ((fraction1 > fraction2) || (fraction1 == fraction2)) {
+        greatequal = true;
+    }
     return greatequal;
 }
 
 bool operator==(const Fraction &fraction1, const Fraction &fraction2) {
-    bool lessequal = false;
-    return lessequal;
+    bool equal = false;
+    if ((fraction1.getNumer() / fraction2.getDenom()) == (fraction2.getNumer() / fraction2.getDenom())) {
+        equal = true;
+    }
+    return equal;
 }
 
 bool operator!=(const Fraction &fraction1, const Fraction &fraction2) {
-    bool lessequal = false;
-    return lessequal;
+    return !(fraction1==fraction2);
 }
 
 bool operator<(const Fraction &fraction, const int n) {
-    bool lessequal = false;
-    return lessequal;
+    bool lessthan = false;
+    if ((fraction.getNumer() / fraction.getDenom()) < n ) {
+        lessthan = true;
+    }
+    return lessthan;
 }
 
 bool operator>(const Fraction &fraction, const int n) {
-    bool lessequal = false;
-    return lessequal;
+    bool greatthan = false;
+    if ((fraction.getNumer() / fraction.getDenom()) > n ) {
+        greatthan = true;
+    }
+    return greatthan;
 }
 
 bool operator<=(const Fraction &fraction, const int n) {
     bool lessequal = false;
+    if ((fraction < n) || (fraction == n)) {
+        lessequal = true;
+    }
     return lessequal;
 }
 
 bool operator>=(const Fraction &fraction, const int n) {
-    bool lessequal = false;
-    return lessequal;
+    bool greatequal = false;
+    if ((fraction < n) || (fraction == n)) {
+        greatequal = true;
+    }
+    return greatequal;
 }
 
 bool operator==(const Fraction &fraction, const int n) {
