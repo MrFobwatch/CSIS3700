@@ -37,11 +37,11 @@ Point operator*(const Point& point, const Fraction& fraction) {
     return Point(productx, producty);
 }
 
-//std::istream &operator>>(std::istream &, Point &) {
-//    return <#initializer#>;
-//}
-//
-//std::ostream &operator<<(std::ostream& out, const Point& point) {
-//    out << point.x << "," << point.y;
-//    return out;
-//}
+std::istream &operator>>(std::istream& in, Point& point) {
+    return in;
+}
+
+std::ostream &operator<<(std::ostream& out, const Point& point) {
+    out << point.x << "," << point.y;
+    return out;
+}

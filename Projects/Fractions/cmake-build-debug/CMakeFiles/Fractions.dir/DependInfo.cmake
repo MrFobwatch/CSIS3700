@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "D:/Kevin/Git/CSIS3700/Projects/Fractions/Fraction.cpp" "D:/Kevin/Git/CSIS3700/Projects/Fractions/cmake-build-debug/CMakeFiles/Fractions.dir/Fraction.cpp.obj"
-  "D:/Kevin/Git/CSIS3700/Projects/Fractions/Point.cpp" "D:/Kevin/Git/CSIS3700/Projects/Fractions/cmake-build-debug/CMakeFiles/Fractions.dir/Point.cpp.obj"
-  "D:/Kevin/Git/CSIS3700/Projects/Fractions/main.cpp" "D:/Kevin/Git/CSIS3700/Projects/Fractions/cmake-build-debug/CMakeFiles/Fractions.dir/main.cpp.obj"
+  "C:/Users/Kevin/Git/CSIS3700/Projects/Fractions/Fraction.cpp" "C:/Users/Kevin/Git/CSIS3700/Projects/Fractions/cmake-build-debug/CMakeFiles/Fractions.dir/Fraction.cpp.obj"
+  "C:/Users/Kevin/Git/CSIS3700/Projects/Fractions/Point.cpp" "C:/Users/Kevin/Git/CSIS3700/Projects/Fractions/cmake-build-debug/CMakeFiles/Fractions.dir/Point.cpp.obj"
+  "C:/Users/Kevin/Git/CSIS3700/Projects/Fractions/main.cpp" "C:/Users/Kevin/Git/CSIS3700/Projects/Fractions/cmake-build-debug/CMakeFiles/Fractions.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
