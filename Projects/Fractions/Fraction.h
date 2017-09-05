@@ -23,6 +23,9 @@ public:
     Fraction operator=(const Fraction &fraction);
     friend std::istream& operator>>(std::istream &ins, Fraction &fraction);
     friend std::ostream& operator<<(std::ostream &out, const Fraction &fraction);
+    void FractionEquals();
+    friend std::istream& operator>>(std::istream &, Fraction &);
+    friend std::ostream& operator<<(std::ostream &, const Fraction &);
 
 private:
     int numer;
@@ -33,17 +36,17 @@ Fraction operator+(const Fraction &fraction1, const Fraction &fraction2);
 Fraction operator-(const Fraction &fraction1, const Fraction &fraction2);
 Fraction operator*(const Fraction &fraction1, const Fraction &fraction2);
 Fraction operator/(const Fraction &fraction1, const Fraction &fraction2);
-Fraction operator<(const Fraction &fraction1, const Fraction &fraction2);
-Fraction operator>(const Fraction &fraction1, const Fraction &fraction2);
-Fraction operator<=(const Fraction &fraction1, const Fraction &fraction2);
-Fraction operator>=(const Fraction &fraction1, const Fraction &fraction2);
-Fraction operator==(const Fraction &fraction1, const Fraction &fraction2);
-Fraction operator!=(const Fraction &fraction1, const Fraction &fraction2);
-Fraction operator<(const Fraction &fraction, int n);
-Fraction operator>(const Fraction &fraction, int n);
-Fraction operator<=(const Fraction &fraction, int n);
-Fraction operator>=(const Fraction &fraction, int n);
-Fraction operator==(const Fraction &fraction, int n);
+bool operator<(const Fraction &fraction1, const Fraction &fraction2);
+bool operator>(const Fraction &fraction1, const Fraction &fraction2);
+bool operator<=(const Fraction &fraction1, const Fraction &fraction2);
+bool operator>=(const Fraction &fraction1, const Fraction &fraction2);
+bool operator==(const Fraction &fraction1, const Fraction &fraction2);
+bool operator!=(const Fraction &fraction1, const Fraction &fraction2);
+bool operator<(const Fraction &fraction, const int n);
+bool operator>(const Fraction &fraction, const int n);
+bool operator<=(const Fraction &fraction, const int n);
+bool operator>=(const Fraction &fraction, const int n);
+bool operator==(const Fraction &fraction, const int n);
 
 
 #endif //FRACTIONS_FRACTION_H
