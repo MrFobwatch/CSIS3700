@@ -4,9 +4,19 @@
 
 #include "Point.h"
 
-Point::Point(Fraction x, Fraction y) {
-    setX(x);
-    setY(y);
+Point::Point() {
+    setX(Fraction(0));
+    setY(Fraction(0));
+}
+
+Point::Point(Fraction xcoord, Fraction ycoord) {
+    x = xcoord;
+    y = ycoord;
+}
+
+Point& Point::operator=(const Point &point) {
+    x = point.x;
+    y = point.y;
 }
 
 const Fraction &Point::getX() const {
@@ -45,7 +55,7 @@ Fraction operator*(const Point& point1, const Point& point2) {    //Performs the
     return cross;
 }
 
-Point operator*(const Point& point, const Fraction& fraction) {
+Point operator*(const Fraction &fraction, const Point &point) {
     Fraction xRes,yRes;
     xRes = point.getX() * fraction;
     yRes = point.getY() * fraction;

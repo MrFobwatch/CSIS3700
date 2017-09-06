@@ -19,13 +19,10 @@ public:
     void setFrac();
     void setFrac(int numer);
     void setFrac(int numer, int denom);
-    //void FractionEquals(); //Replace with Operator assignment
-    Fraction operator=(const Fraction &fraction);
+    Fraction& operator=(const Fraction &fraction);
     friend std::istream& operator>>(std::istream &ins, Fraction &fraction);
     friend std::ostream& operator<<(std::ostream &out, const Fraction &fraction);
-    void FractionEquals();
-    friend std::istream& operator>>(std::istream &, Fraction &);
-    friend std::ostream& operator<<(std::ostream &, const Fraction &);
+//    void FractionEquals();
 
 private:
     int numer;
@@ -42,11 +39,11 @@ bool operator<=(const Fraction &fraction1, const Fraction &fraction2);
 bool operator>=(const Fraction &fraction1, const Fraction &fraction2);
 bool operator==(const Fraction &fraction1, const Fraction &fraction2);
 bool operator!=(const Fraction &fraction1, const Fraction &fraction2);
-bool operator<(const Fraction &fraction, const int n);
-bool operator>(const Fraction &fraction, const int n);
-bool operator<=(const Fraction &fraction, const int n);
-bool operator>=(const Fraction &fraction, const int n);
-bool operator==(const Fraction &fraction, const int n);
+bool operator<(const Fraction &fraction, int n);
+bool operator>(const Fraction &fraction, int n);
+bool operator<=(const Fraction &fraction, int n);
+bool operator>=(const Fraction &fraction, int n);
+bool operator==(const Fraction &fraction, int n);
 
 
 #endif //FRACTIONS_FRACTION_H

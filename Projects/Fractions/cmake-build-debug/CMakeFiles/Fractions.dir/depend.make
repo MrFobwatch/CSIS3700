@@ -9,5 +9,6 @@ CMakeFiles/Fractions.dir/Point.cpp.obj: ../Point.cpp
 CMakeFiles/Fractions.dir/Point.cpp.obj: ../Point.h
 
 CMakeFiles/Fractions.dir/main.cpp.obj: ../Fraction.h
+CMakeFiles/Fractions.dir/main.cpp.obj: ../Point.h
 CMakeFiles/Fractions.dir/main.cpp.obj: ../main.cpp
 
