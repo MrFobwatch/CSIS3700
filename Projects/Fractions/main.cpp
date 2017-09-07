@@ -9,26 +9,26 @@ int main() {
     std::cout << "Enter a point P1: " << std::endl;
 //    std::cin >> x;
 //    std::cin >> y;
-    x = Fraction(4);
-    y = Fraction(15);
+    x = Fraction(1);
+    y = Fraction(1);
     Point p1(x,y);
     std::cout << "Enter a point P2: " << std::endl;
 //    std::cin >> x;
 //    std::cin >> y;
-    x = Fraction(8);
-    y = Fraction(25);
+    x = Fraction(20);
+    y = Fraction(10);
     Point p2(x,y);
     std::cout << "Enter a point Q1: " << std::endl;
 //    std::cin >> x;
 //    std::cin >> y;
-    x = Fraction(1);
-    y = Fraction(3);
+    x = Fraction(2);
+    y = Fraction(10);
     Point q1(x,y);
     std::cout << "Enter a point Q2: " << std::endl;
 //    std::cin >> x;
 //    std::cin >> y;
-    x = Fraction(7);
-    y = Fraction(9);
+    x = Fraction(15);
+    y = Fraction(2);
     Point q2(x,y);
     //Parametrize points
     Point r;
@@ -58,7 +58,12 @@ int main() {
         if (((Fraction (0) <= t) &&  (t <= Fraction(1))) && ((Fraction (0) <= u) && (u <= Fraction(1)))) {
             Point intersect;
             intersect = p1 + (t * r);
-            std::cout << "The intersection is " << intersect << std::endl;
+            Fraction inter_x = intersect.getX();
+            Fraction inter_y = intersect.getY();
+            inter_x.simpFrac();
+            inter_y.simpFrac();
+            Point intersectSimp(inter_x, inter_y);
+            std::cout << "The intersection is " << intersectSimp << std::endl;
         }
         else {
             std::cout << "The line segments do not intersect" << std::endl;

@@ -44,7 +44,24 @@ void Fraction::setFrac(int numer) {
     setDenom(1);
 }
 
-void Fraction::setFrac(int numer, int denom) {
+void Fraction::setFrac(int numer, int denom) { //Also reduces fractions
+//    for (int i = numer * denom; i>1; i--) {
+//        if ((denom % i == 0) && (numer % i == 0 )) {
+//            denom /= i;
+//            numer /=i;
+//        }
+//    }
+    setNumer(numer);
+    setDenom(denom);
+
+}
+
+void Fraction::simpFrac() {
+    int numer = getNumer();
+    int denom = getDenom();
+    int g = gcd(numer, denom);
+    numer /= g;
+    denom /= g;
     setNumer(numer);
     setDenom(denom);
 }
@@ -61,7 +78,7 @@ Fraction operator+(const Fraction &fraction1, const Fraction &fraction2) {
     return Fraction(numerResult, denomResult);
 }
 
-Fraction operator-(const Fraction &fraction1, const Fraction &fraction2) {
+Fraction operator-(const Fraction &fraction1, const Fraction &fraction2) { //Simplify at the end of subtraction
     int numerResult,denomResult;
     numerResult = fraction1.getNumer() - fraction2.getNumer();
     if (fraction1.getDenom() == fraction2.getDenom()) {
@@ -72,6 +89,7 @@ Fraction operator-(const Fraction &fraction1, const Fraction &fraction2) {
         denomResult = (fraction1.getDenom() * fraction2.getDenom());
 
     }
+
     return Fraction(numerResult, denomResult);
 }
 
@@ -185,6 +203,15 @@ std::istream &operator>>(std::istream &ins, Fraction &fraction){
 std::ostream &operator<<(std::ostream &out, const Fraction &fraction) {
     out << fraction.getNumer() << "/" << fraction.getDenom();
     return out;
+}
+
+int gcd(int a, int b) {
+    a = abs(a);
+    b = abs(b);
+    if (b == 0)
+        return a;
+
+    return gcd(b, a % b);
 }
 
 

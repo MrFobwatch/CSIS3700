@@ -1,4 +1,4 @@
-C:\Users\Kevin\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\172.3968.17\bin\cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" D:\Kevin\Git\CSIS3700\Projects\Fractions
+C:\Users\Kevin\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\172.3968.17\bin\cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\Kevin\Git\CSIS3700\Projects\Fractions
 -- The C compiler identification is GNU 5.3.0
 -- The CXX compiler identification is GNU 5.3.0
 -- Check for working C compiler: C:/MinGW/bin/gcc.exe
@@ -15,4 +15,4 @@ C:\Users\Kevin\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\172.3968.17\bin\c
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: D:/Kevin/Git/CSIS3700/Projects/Fractions/cmake-build-debug
+-- Build files have been written to: C:/Users/Kevin/Git/CSIS3700/Projects/Fractions/cmake-build-debug
