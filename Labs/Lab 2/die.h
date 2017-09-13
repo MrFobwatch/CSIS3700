@@ -1,0 +1,19 @@
+#ifndef _DIE_H
+#define _DIE_H
+#include <cstdlib>
+
+class Die {
+
+ public:
+  Die(int _nFaces=6);
+  ~Die(void) {};
+  int roll(void);
+  int lookAt(void); 
+ 
+ private:
+  int nFaces;
+  int top;
+
+};
+
+#endif
