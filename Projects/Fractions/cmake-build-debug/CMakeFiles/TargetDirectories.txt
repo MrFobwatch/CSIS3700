@@ -1,3 +1,0 @@
-D:/Kevin/Git/CSIS3700/Projects/Fractions/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/Kevin/Git/CSIS3700/Projects/Fractions/cmake-build-debug/CMakeFiles/Fractions.dir
-D:/Kevin/Git/CSIS3700/Projects/Fractions/cmake-build-debug/CMakeFiles/rebuild_cache.dir
