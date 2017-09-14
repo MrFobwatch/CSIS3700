@@ -4,95 +4,90 @@
 
 #include "Fraction.h"
 
+static int gcd(int a, int b) {
+    a = abs(a);
+    b = abs(b);
+    if (b == 0)
+        return a;
+
+    return gcd(b, a % b);
+}
+
 Fraction::Fraction() {
     setFrac();
 }
-Fraction::Fraction(int numer){
-    setFrac(numer);
+Fraction::Fraction(int num){
+    setFrac(num);
 }
 
-Fraction::Fraction(int numer, int denom){
-   setFrac(numer,denom);
-}
-
-int Fraction::getNumer() const {
-    return numer;
-}
-
-void Fraction::setNumer(int numer) {
-    this->numer = numer;
-}
-
-int Fraction::getDenom() const {
-    return denom;
-}
-
-void Fraction::setDenom(int denom) {
-    this->denom = denom;
+Fraction::Fraction(int num, int den){
+   setFrac(num,den);
 }
 
 void Fraction::setFrac() {
-    setNumer(0);
-    setDenom(1);
+    numer = 0;
+    denom = 1;
 }
 
-void Fraction::setFrac(int numer) {
-    setNumer(numer);
-    setDenom(1);
+void Fraction::setFrac(int num) {
+    numer = num;
+    denom = 1;
 }
 
-void Fraction::setFrac(int numer, int denom) { //Also reduces fractions
-    int g = gcd(numer, denom);
-    numer /= g;
-    denom /= g;
-    setNumer(numer);
-    setDenom(denom);
+void Fraction::setFrac(int num, int den) { //Also reduces fractions
+    if (num < 0) {
+        num = -num;
+        den = -den;
+    }
+    int g = gcd(num, den);
+    num /= g;
+    den /= g;
+    numer = num;
+    denom = den;
 }
 
-Fraction& Fraction::operator=(const Fraction &fraction) {
+Fraction Fraction::operator=(const Fraction &fraction) {
     numer = fraction.numer;
     denom = fraction.denom;
 }
 
-Fraction Fraction::operator+(const Fraction &fraction1, const Fraction &fraction2) {
+Fraction Fraction::operator+(const Fraction &fraction) {
     int numerResult,denomResult;
-    numerResult = fraction1.getNumer() + fraction2.getNumer();
-    denomResult = fraction1.getDenom() + fraction2.getDenom();
+    numerResult = numer * fraction.denom + fraction.numer * denom;
+    denomResult = denom * fraction.denom;
     return Fraction(numerResult, denomResult);
 }
 
-Fraction Fraction::operator-(const Fraction &fraction1, const Fraction &fraction2) { //Simplify at the end of subtraction
+Fraction Fraction::operator-(const Fraction &fraction) { //Simplify at the end of subtraction
     int numerResult,denomResult;
-    numerResult = fraction1.getNumer() - fraction2.getNumer();
-    if (fraction1.getDenom() == fraction2.getDenom()) {
-        denomResult = fraction1.getDenom();
+    numerResult = numer - fraction.numer;
+    if (fraction.denom == denom) {
+        denomResult = fraction.denom;
     }
     else {
-        numerResult = ((fraction1.getNumer() * fraction2.getDenom()) - (fraction2.getNumer() * fraction1.getDenom()));
-        denomResult = (fraction1.getDenom() * fraction2.getDenom());
-
+        numerResult = ((numer * fraction.denom) - (fraction.numer * denom));
+        denomResult = (denom * fraction.denom);
     }
-
     return Fraction(numerResult, denomResult);
 }
 
-Fraction Fraction::operator*(const Fraction &fraction1, const Fraction &fraction2) {
+Fraction Fraction::operator*(const Fraction &fraction) {
     int numerResult,denomResult;
-    numerResult = fraction1.getNumer() * fraction2.getNumer();
-    denomResult = fraction1.getDenom() * fraction2.getDenom();
+    numerResult = numer * fraction.numer;
+    denomResult = denom * fraction.denom;
     return Fraction(numerResult, denomResult);
 }
 
-Fraction Fraction::operator/(const Fraction &fraction1, const Fraction &fraction2) {
+Fraction Fraction::operator/(const Fraction &fraction) {
     int numerResult,denomResult;
-    numerResult = fraction1.getNumer() * fraction2.getDenom();
-    denomResult = fraction1.getDenom() * fraction2.getNumer();
+    numerResult = numer * fraction.denom;
+    denomResult = denom * fraction.numer;
     return Fraction(numerResult, denomResult);
 }
 
 bool Fraction::operator<(const Fraction &fraction) {
     bool lessthan = false;
-    if ((numer / denom) < ((fraction.numer) / fraction.denom)) {
+    if ((numer / denom) < (fraction.numer / fraction.denom)) {
         lessthan = true;
     }
     return lessthan;
@@ -107,75 +102,81 @@ bool Fraction::operator>(const Fraction &fraction) {
 }
 
 bool Fraction::operator<=(const Fraction &fraction) {
+    Fraction frac(numer,denom);
     bool lessequal = false;
-    if ((fraction1 < fraction2) || (fraction1 == fraction2)) {
+    if ((frac < fraction) || (frac == fraction)) {
         lessequal = true;
     }
     return lessequal;
 }
 
-bool Fraction::operator>=(const Fraction &fraction1, const Fraction &fraction2) {
+bool Fraction::operator>=(const Fraction &fraction) {
+    Fraction frac(numer,denom);
     bool greatequal = false;
-    if ((fraction1 > fraction2) || (fraction1 == fraction2)) {
+    if ((frac > fraction) || (frac == fraction)) {
         greatequal = true;
     }
     return greatequal;
 }
 
-bool Fraction::operator==(const Fraction &fraction1, const Fraction &fraction2) {
+bool Fraction::operator==(const Fraction &fraction) {
     bool equal = false;
-    if ((fraction1.getNumer() / fraction2.getDenom()) == (fraction2.getNumer() / fraction2.getDenom())) {
+    if ((numer / denom) == (fraction.numer / fraction.denom)) {
         equal = true;
     }
     return equal;
 }
 
-bool Fraction::operator!=(const Fraction &fraction1, const Fraction &fraction2) {
-    return !(fraction1==fraction2);
+bool Fraction::operator!=(const Fraction &fraction) {
+    Fraction frac(numer,denom);
+    return !(frac==fraction);
 }
 
-bool Fraction::operator<(const Fraction &fraction, const int n) {
+bool Fraction::operator<(const int n) {
     bool lessthan = false;
-    if ((fraction.getNumer() / fraction.getDenom()) < n ) {
+    if ((numer / denom) < n ) {
         lessthan = true;
     }
     return lessthan;
 }
 
-bool Fraction::operator>(const Fraction &fraction, const int n) {
+bool Fraction::operator>(const int n) {
     bool greatthan = false;
-    if ((fraction.getNumer() / fraction.getDenom()) > n ) {
+    if ((numer / denom) > n ) {
         greatthan = true;
     }
     return greatthan;
 }
 
-bool Fraction::operator<=(const Fraction &fraction, const int n) {
+bool Fraction::operator<=(const int n) {
+    Fraction frac(numer,denom);
     bool lessequal = false;
-    if ((fraction < n) || (fraction == n)) {
+    if ((frac < n) || (frac == n)) {
         lessequal = true;
     }
     return lessequal;
 }
 
-bool Fraction::operator>=(const Fraction &fraction, const int n) {
+bool Fraction::operator>=(const int n) {
+    Fraction frac(numer,denom);
     bool greatequal = false;
-    if ((fraction < n) || (fraction == n)) {
+    if ((frac < n) || (frac == n)) {
         greatequal = true;
     }
     return greatequal;
 }
 
-bool Fraction::operator==(const Fraction &fraction, const int n) {
+bool Fraction::operator==(const int n) {
     bool equal = false;
-    if ((fraction.getNumer()/fraction.getDenom()) == n) {
+    if ((numer / denom) == n) {
         equal = true;
     }
     return equal;
 }
 
-bool Fraction::operator!=(const Fraction &fraction, const int n) {
-    return !(fraction == n);
+bool Fraction::operator!=(const int n) {
+    Fraction frac(numer,denom);
+    return !(frac == n);
 }
 
 std::istream &operator>>(std::istream &ins, Fraction &fraction){
@@ -184,17 +185,9 @@ std::istream &operator>>(std::istream &ins, Fraction &fraction){
 }
 
 std::ostream &operator<<(std::ostream &out, const Fraction &fraction) {
-    out << fraction.getNumer() << "/" << fraction.getDenom();
+    out << fraction.numer << "/" << fraction.denom;
     return out;
 }
 
-static int gcd(int a, int b) {
-    a = abs(a);
-    b = abs(b);
-    if (b == 0)
-        return a;
-
-    return gcd(b, a % b);
-}
 
 

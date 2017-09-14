@@ -57,13 +57,8 @@ int main() {
         u = x_u / y_ans;
         if (((Fraction (0) <= t) &&  (t <= Fraction(1))) && ((Fraction (0) <= u) && (u <= Fraction(1)))) {
             Point intersect;
-            intersect = p1 + (t * r);
-            Fraction inter_x = intersect.getX();
-            Fraction inter_y = intersect.getY();
-            inter_x.simpFrac();
-            inter_y.simpFrac();
-            Point intersectSimp(inter_x, inter_y);
-            std::cout << "The intersection is " << intersectSimp << std::endl;
+            intersect = p1 + (r * t); //Must be in the order of point * fraction for code to work
+            std::cout << "The intersection is " << intersect << std::endl;
         }
         else {
             std::cout << "The line segments do not intersect" << std::endl;

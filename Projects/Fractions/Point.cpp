@@ -5,8 +5,8 @@
 #include "Point.h"
 
 Point::Point() {
-    setX(Fraction(0));
-    setY(Fraction(0));
+    x = Fraction();
+    y = Fraction();
 }
 
 Point::Point(Fraction xcoord, Fraction ycoord) {
@@ -14,51 +14,35 @@ Point::Point(Fraction xcoord, Fraction ycoord) {
     y = ycoord;
 }
 
-Point& Point::operator=(const Point &point) {
-    x = point.x;
-    y = point.y;
-}
+//Point::operator=(const Point &point) {
+//    x = point.x;
+//    y = point.y;
+//}
 
-const Fraction &Point::getX() const {
-    return x;
-}
-
-void Point::setX(const Fraction &x) {
-    Point::x = x;
-}
-
-const Fraction &Point::getY() const {
-    return y;
-}
-
-void Point::setY(const Fraction &y) {
-    Point::y = y;
-}
-
-Point operator+(const Point& point1, const Point& point2) {
+Point Point::operator+(const Point &point) {
     Fraction xRes,yRes;
-    xRes = point1.getX() + point2.getX();
-    yRes = point1.getY() + point2.getY();
+    xRes = x + point.x;
+    yRes = y + point.y;
     return Point(xRes, yRes);
 }
 
-Point operator-(const Point& point1, const Point& point2) {
+Point Point::operator-(const Point &point) {
     Fraction xRes,yRes;
-    xRes = point1.getX() - point2.getX();
-    yRes = point1.getY() - point2.getY();
+    xRes = x - point.x;
+    yRes = y - point.y;
     return Point(xRes, yRes);
 }
 
-Fraction operator*(const Point& point1, const Point& point2) {    //Performs the cross product
+Fraction Point::operator*(const Point &point) {    //Performs the cross product
     Fraction cross;
-    cross = (point1.getX() * point2.getY()) - (point1.getY() * point2.getX());
+    cross = ((x * point.y) - (y * point.x));
     return cross;
 }
 
-Point operator*(const Fraction &fraction, const Point &point) {
+Point Point::operator*(const Fraction &fraction) {
     Fraction xRes,yRes;
-    xRes = point.getX() * fraction;
-    yRes = point.getY() * fraction;
+    xRes = x * fraction;
+    yRes = y * fraction;
     return Point(xRes, yRes);
 }
 
@@ -68,6 +52,6 @@ std::istream &operator>>(std::istream &ins, Point &point) {
 }
 
 std::ostream &operator<<(std::ostream& out, const Point& point) {
-    out << point.x << "," << point.y;
+    out << "(" << point.x << ", " << point.y << ")";
     return out;
 }

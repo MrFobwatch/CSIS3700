@@ -52,6 +52,15 @@
 
 # CMake
 cmake-build-debug/
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
 
 # Mongo Explorer plugin:
 .idea/**/mongoSettings.xml
@@ -91,14 +100,3 @@ fabric.properties
 .idea/sonarlint
 
 # End of https://www.gitignore.io/api/clion
-
-# CMake
-CMakeCache.txt
-CMakeFiles
-CMakeScripts
-Testing
-Makefile
-cmake_install.cmake
-install_manifest.txt
-compile_commands.json
-CTestTestfile.cmake

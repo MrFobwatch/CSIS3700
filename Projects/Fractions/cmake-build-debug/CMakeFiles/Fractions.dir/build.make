@@ -42,10 +42,10 @@ RM = C:\Users\Kevin\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\172.3968.17\
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Kevin\Git\CSIS3700\Projects\Fractions
+CMAKE_SOURCE_DIR = D:\Kevin\Git\CSIS3700\Projects\Fractions
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug
+CMAKE_BINARY_DIR = D:\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Fractions.dir/depend.make
@@ -58,16 +58,16 @@ include CMakeFiles/Fractions.dir/flags.make
 
 CMakeFiles/Fractions.dir/main.cpp.obj: CMakeFiles/Fractions.dir/flags.make
 CMakeFiles/Fractions.dir/main.cpp.obj: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Fractions.dir/main.cpp.obj"
-	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Fractions.dir\main.cpp.obj -c C:\Users\Kevin\Git\CSIS3700\Projects\Fractions\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Fractions.dir/main.cpp.obj"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Fractions.dir\main.cpp.obj -c D:\Kevin\Git\CSIS3700\Projects\Fractions\main.cpp
 
 CMakeFiles/Fractions.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Fractions.dir/main.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Kevin\Git\CSIS3700\Projects\Fractions\main.cpp > CMakeFiles\Fractions.dir\main.cpp.i
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Kevin\Git\CSIS3700\Projects\Fractions\main.cpp > CMakeFiles\Fractions.dir\main.cpp.i
 
 CMakeFiles/Fractions.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Fractions.dir/main.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Kevin\Git\CSIS3700\Projects\Fractions\main.cpp -o CMakeFiles\Fractions.dir\main.cpp.s
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Kevin\Git\CSIS3700\Projects\Fractions\main.cpp -o CMakeFiles\Fractions.dir\main.cpp.s
 
 CMakeFiles/Fractions.dir/main.cpp.obj.requires:
 
@@ -82,16 +82,16 @@ CMakeFiles/Fractions.dir/main.cpp.obj.provides.build: CMakeFiles/Fractions.dir/m
 
 CMakeFiles/Fractions.dir/Fraction.cpp.obj: CMakeFiles/Fractions.dir/flags.make
 CMakeFiles/Fractions.dir/Fraction.cpp.obj: ../Fraction.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Fractions.dir/Fraction.cpp.obj"
-	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Fractions.dir\Fraction.cpp.obj -c C:\Users\Kevin\Git\CSIS3700\Projects\Fractions\Fraction.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Fractions.dir/Fraction.cpp.obj"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Fractions.dir\Fraction.cpp.obj -c D:\Kevin\Git\CSIS3700\Projects\Fractions\Fraction.cpp
 
 CMakeFiles/Fractions.dir/Fraction.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Fractions.dir/Fraction.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Kevin\Git\CSIS3700\Projects\Fractions\Fraction.cpp > CMakeFiles\Fractions.dir\Fraction.cpp.i
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Kevin\Git\CSIS3700\Projects\Fractions\Fraction.cpp > CMakeFiles\Fractions.dir\Fraction.cpp.i
 
 CMakeFiles/Fractions.dir/Fraction.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Fractions.dir/Fraction.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Kevin\Git\CSIS3700\Projects\Fractions\Fraction.cpp -o CMakeFiles\Fractions.dir\Fraction.cpp.s
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Kevin\Git\CSIS3700\Projects\Fractions\Fraction.cpp -o CMakeFiles\Fractions.dir\Fraction.cpp.s
 
 CMakeFiles/Fractions.dir/Fraction.cpp.obj.requires:
 
@@ -106,16 +106,16 @@ CMakeFiles/Fractions.dir/Fraction.cpp.obj.provides.build: CMakeFiles/Fractions.d
 
 CMakeFiles/Fractions.dir/Point.cpp.obj: CMakeFiles/Fractions.dir/flags.make
 CMakeFiles/Fractions.dir/Point.cpp.obj: ../Point.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Fractions.dir/Point.cpp.obj"
-	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Fractions.dir\Point.cpp.obj -c C:\Users\Kevin\Git\CSIS3700\Projects\Fractions\Point.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Fractions.dir/Point.cpp.obj"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Fractions.dir\Point.cpp.obj -c D:\Kevin\Git\CSIS3700\Projects\Fractions\Point.cpp
 
 CMakeFiles/Fractions.dir/Point.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Fractions.dir/Point.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Kevin\Git\CSIS3700\Projects\Fractions\Point.cpp > CMakeFiles\Fractions.dir\Point.cpp.i
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Kevin\Git\CSIS3700\Projects\Fractions\Point.cpp > CMakeFiles\Fractions.dir\Point.cpp.i
 
 CMakeFiles/Fractions.dir/Point.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Fractions.dir/Point.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Kevin\Git\CSIS3700\Projects\Fractions\Point.cpp -o CMakeFiles\Fractions.dir\Point.cpp.s
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Kevin\Git\CSIS3700\Projects\Fractions\Point.cpp -o CMakeFiles\Fractions.dir\Point.cpp.s
 
 CMakeFiles/Fractions.dir/Point.cpp.obj.requires:
 
@@ -144,7 +144,7 @@ Fractions.exe: CMakeFiles/Fractions.dir/build.make
 Fractions.exe: CMakeFiles/Fractions.dir/linklibs.rsp
 Fractions.exe: CMakeFiles/Fractions.dir/objects1.rsp
 Fractions.exe: CMakeFiles/Fractions.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Fractions.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Fractions.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Fractions.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -163,6 +163,6 @@ CMakeFiles/Fractions.dir/clean:
 .PHONY : CMakeFiles/Fractions.dir/clean
 
 CMakeFiles/Fractions.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\Kevin\Git\CSIS3700\Projects\Fractions C:\Users\Kevin\Git\CSIS3700\Projects\Fractions C:\Users\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug C:\Users\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug C:\Users\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug\CMakeFiles\Fractions.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\Kevin\Git\CSIS3700\Projects\Fractions D:\Kevin\Git\CSIS3700\Projects\Fractions D:\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug D:\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug D:\Kevin\Git\CSIS3700\Projects\Fractions\cmake-build-debug\CMakeFiles\Fractions.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Fractions.dir/depend
 

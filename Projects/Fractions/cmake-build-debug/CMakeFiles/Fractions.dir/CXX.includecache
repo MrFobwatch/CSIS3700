@@ -6,29 +6,29 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Kevin/Git/CSIS3700/Projects/Fractions/Fraction.cpp
+D:/Kevin/Git/CSIS3700/Projects/Fractions/Fraction.cpp
 Fraction.h
-C:/Users/Kevin/Git/CSIS3700/Projects/Fractions/Fraction.h
+D:/Kevin/Git/CSIS3700/Projects/Fractions/Fraction.h
 
-C:/Users/Kevin/Git/CSIS3700/Projects/Fractions/Fraction.h
+D:/Kevin/Git/CSIS3700/Projects/Fractions/Fraction.h
 cstdlib
 -
 iostream
 -
 
-C:/Users/Kevin/Git/CSIS3700/Projects/Fractions/Point.cpp
+D:/Kevin/Git/CSIS3700/Projects/Fractions/Point.cpp
 Point.h
-C:/Users/Kevin/Git/CSIS3700/Projects/Fractions/Point.h
+D:/Kevin/Git/CSIS3700/Projects/Fractions/Point.h
 
-C:/Users/Kevin/Git/CSIS3700/Projects/Fractions/Point.h
+D:/Kevin/Git/CSIS3700/Projects/Fractions/Point.h
 iostream
 -
 Fraction.h
-C:/Users/Kevin/Git/CSIS3700/Projects/Fractions/Fraction.h
+D:/Kevin/Git/CSIS3700/Projects/Fractions/Fraction.h
 
-C:/Users/Kevin/Git/CSIS3700/Projects/Fractions/main.cpp
+D:/Kevin/Git/CSIS3700/Projects/Fractions/main.cpp
 iostream
 -
 Point.h
-C:/Users/Kevin/Git/CSIS3700/Projects/Fractions/Point.h
+D:/Kevin/Git/CSIS3700/Projects/Fractions/Point.h
 
