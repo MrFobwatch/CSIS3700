@@ -2,6 +2,7 @@
 #include "die.h"
 
 int main() {
+  srand(time(NULL));
   Die d1, d2;
   Die d20(20);
   Die coin(2), octa(8);
