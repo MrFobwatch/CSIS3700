@@ -158,7 +158,7 @@ bool Fraction::operator!=(const int n) {
 
 std::istream &operator>>(std::istream &ins, Fraction &fraction){
     char slash='/';
-    ins >> fraction.numer >> '/' >> fraction.denom;
+    ins >> fraction.numer >> slash >> fraction.denom;
     return ins;
 }
 
