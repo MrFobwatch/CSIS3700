@@ -108,7 +108,7 @@ bool Fraction::operator>(const Fraction &fraction) {
 }
 
 bool Fraction::operator<=(const Fraction &fraction) {
-
+    Fraction frac(numer,denom);
     bool lessequal = false;
     if ((frac < fraction) || (frac == fraction)) {
         lessequal = true;
@@ -157,7 +157,8 @@ bool Fraction::operator!=(const int n) {
 }
 
 std::istream &operator>>(std::istream &ins, Fraction &fraction){
-    ins >> fraction.numer >> "/" >> fraction.denom;
+//    char slash='/';
+    ins >> fraction.numer >> '/' >> fraction.denom;
     return ins;
 }
 
