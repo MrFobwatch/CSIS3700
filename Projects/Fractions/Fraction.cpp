@@ -86,23 +86,29 @@ Fraction Fraction::operator/(const Fraction &fraction) {
 }
 
 bool Fraction::operator<(const Fraction &fraction) {
-    bool lessthan = false;
-    if ((numer / denom) < (fraction.numer / fraction.denom)) {
-        lessthan = true;
+    if (denom * fraction.denom >= 0)
+    {
+        return numer * fraction.denom < fraction.numer * denom;
     }
-    return lessthan;
+    else
+    {
+        return numer * fraction.denom > fraction.numer * denom;
+    }
 }
 
 bool Fraction::operator>(const Fraction &fraction) {
-    bool greatthan = false;
-    if ((numer / denom) > ((fraction.numer) / fraction.denom)) {
-        greatthan = true;
+    if (denom * fraction.denom >= 0)
+    {
+        return numer * fraction.denom > fraction.numer * denom;
     }
-    return greatthan;
+    else
+    {
+        return numer * fraction.denom < fraction.numer * denom;
+    }
 }
 
 bool Fraction::operator<=(const Fraction &fraction) {
-    Fraction frac(numer,denom);
+
     bool lessequal = false;
     if ((frac < fraction) || (frac == fraction)) {
         lessequal = true;
@@ -111,76 +117,47 @@ bool Fraction::operator<=(const Fraction &fraction) {
 }
 
 bool Fraction::operator>=(const Fraction &fraction) {
-    Fraction frac(numer,denom);
     bool greatequal = false;
-    if ((frac > fraction) || (frac == fraction)) {
+    if ((*this > fraction) || (*this == fraction)) {
         greatequal = true;
     }
     return greatequal;
 }
 
 bool Fraction::operator==(const Fraction &fraction) {
-    bool equal = false;
-    if ((numer / denom) == (fraction.numer / fraction.denom)) {
-        equal = true;
-    }
-    return equal;
+    return (numer == fraction.numer) && (denom == fraction.denom);
 }
 
 bool Fraction::operator!=(const Fraction &fraction) {
-    Fraction frac(numer,denom);
-    return !(frac==fraction);
+    return !(*this==fraction);
 }
 
 bool Fraction::operator<(const int n) {
-    bool lessthan = false;
-    if ((numer / denom) < n ) {
-        lessthan = true;
-    }
-    return lessthan;
+    return *this < Fraction(n);
 }
 
 bool Fraction::operator>(const int n) {
-    bool greatthan = false;
-    if ((numer / denom) > n ) {
-        greatthan = true;
-    }
-    return greatthan;
+    return *this > Fraction(n);
 }
 
 bool Fraction::operator<=(const int n) {
-    Fraction frac(numer,denom);
-    bool lessequal = false;
-    if ((frac < n) || (frac == n)) {
-        lessequal = true;
-    }
-    return lessequal;
+    return *this <= Fraction(n);
 }
 
 bool Fraction::operator>=(const int n) {
-    Fraction frac(numer,denom);
-    bool greatequal = false;
-    if ((frac < n) || (frac == n)) {
-        greatequal = true;
-    }
-    return greatequal;
+    return *this >= Fraction(n);
 }
 
 bool Fraction::operator==(const int n) {
-    bool equal = false;
-    if ((numer / denom) == n) {
-        equal = true;
-    }
-    return equal;
+    return *this == Fraction(n);
 }
 
 bool Fraction::operator!=(const int n) {
-    Fraction frac(numer,denom);
-    return !(frac == n);
+    return *this != Fraction(n);
 }
 
 std::istream &operator>>(std::istream &ins, Fraction &fraction){
-    ins >> fraction.numer >> fraction.denom;
+    ins >> fraction.numer >> "/" >> fraction.denom;
     return ins;
 }
 
