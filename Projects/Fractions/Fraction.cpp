@@ -60,8 +60,8 @@ Fraction Fraction::operator+(const Fraction &fraction) {
 
 Fraction Fraction::operator-(const Fraction &fraction) { //Simplify at the end of subtraction
     int numerResult,denomResult;
-    numerResult = numer - fraction.numer;
     if (fraction.denom == denom) {
+    	numerResult = numer - fraction.numer;
         denomResult = fraction.denom;
     }
     else {
@@ -166,6 +166,3 @@ std::ostream &operator<<(std::ostream &out, const Fraction &fraction) {
     out << fraction.numer << "/" << fraction.denom;
     return out;
 }
-
-
-

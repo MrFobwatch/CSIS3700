@@ -12,7 +12,6 @@ class Point {
 public:
     Point();
     Point(Fraction x, Fraction y);
-//    Point operator=(const Point &point);
     Point operator+(const Point &point);
     Point operator-(const Point &point);
     Fraction operator*(const Point &point);
