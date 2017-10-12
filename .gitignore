@@ -106,3 +106,5 @@ Projects/Fractions/\.idea/
 *.cpp~
 *.h~
 *.*~
+
+Projects/Calculator/\.idea/
