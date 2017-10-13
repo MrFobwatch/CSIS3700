@@ -3,8 +3,9 @@
 //
 
 void int main(int argc, char const *argv[]) {
-  numStack.clear();
-  opStack.clear();
-  opStack.psuh($);
+  // numStack.clear();
+  // opStack.clear();
+  // opStack.push($);
+
   return 0;
 }

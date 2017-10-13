@@ -6,11 +6,15 @@
 #define CALCULATOR_CALCULATOR_H
 
 #include "../../../../Programming/include/fraction.h"
+#include "../../../../Programming/include/stack.h"
 #include <cstdlib>
-#include <stack>
+#include <iostream>
+// #include <stack.h>
 
 class calculator {
 public:
+  void evaluate(string s)
+
 
 
 private:
