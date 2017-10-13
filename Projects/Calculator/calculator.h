@@ -5,21 +5,26 @@
 #ifndef CALCULATOR_CALCULATOR_H
 #define CALCULATOR_CALCULATOR_H
 
-#include "../../../../Programming/include/fraction.h"
-#include "../../../../Programming/include/stack.h"
 #include <cstdlib>
 #include <iostream>
-// #include <stack.h>
+#include <string>
+#include "fraction.h"
+#include "stack.h"
+#include "UnsortedDictionary.h"
 
 class calculator {
 public:
-  void evaluate(string s)
+  void evaluate(string expr);
+  void processSymbol(string expr, int first);
+  bool hasPrecedence(char a, char b);
+  void getInput();
 
 
 
 private:
-  stack numStack;
-  stack opStack;
+  Stack<Fraction> numStack;
+  Stack<char> opStack;
+  UnsortedDictionary<string,Fraction> varList; 
 
 };
 
