@@ -17,7 +17,6 @@ public:
   void evaluate(string expr);
   void processSymbol(string expr, int first);
   bool hasPrecedence(char a, char b);
-  void getInput();
   void doOp();
 
 

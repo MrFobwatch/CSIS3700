@@ -3,20 +3,38 @@
 //
 
 #include "calculator.h"
-using namespace std;
+//using namespace std;
 calculator myCalculator;
 
 bool calculator::hasPrecedence(char a, char b) {
   	if (a=='*' || a=='/')
-  		return true;
+  		  return true;
   	if (b=='*' || b=='/')
-  		return false;
+  		  return false;
   	if (a=='+' || a=='-')
-  		return true;
+  		  return true;
   	return false;
 }
 
 void calculator::doOp() {
+    char oper = opStack.pop();
+    Fraction y = numStack.pop();  //The form of the operation is x+y, x-y, etc.
+    Fraction x = numStack.pop();
+    if (oper == '+') {
+        numStack.push(x + y);
+    }
+
+    else if (oper == '-') {
+        numStack.push(x - y);
+    }
+
+    else if (oper == '*') {
+        numStack.push(x * y);
+    }
+
+    else if (oper == '/') {
+        numStack.push(x / y);
+    }
 
 }
 
@@ -93,9 +111,14 @@ void calculator::evaluate(string expr) {
     if (dest != ""){
         varList.update(dest, numStack.pop());
     }
+
+    std::cout << "Ans = " << numStack.peek() << endl;
 }
 
 int main(int argc, char const *argv[]) {
+    string expr;
+    std::cin >> expr;
+    myCalculator.evaluate(expr);
 
-  return 0;
+    return 0;
 };
