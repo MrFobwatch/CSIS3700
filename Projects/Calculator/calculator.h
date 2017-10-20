@@ -18,13 +18,14 @@ public:
   void processSymbol(string expr, int first);
   bool hasPrecedence(char a, char b);
   void getInput();
+  void doOp();
 
 
 
 private:
   Stack<Fraction> numStack;
   Stack<char> opStack;
-  UnsortedDictionary<string,Fraction> varList; 
+  UnsortedDictionary<string,Fraction> varList;
 
 };
 

@@ -3,6 +3,8 @@
 //
 
 #include "calculator.h"
+using namespace std;
+calculator myCalculator;
 
 bool calculator::hasPrecedence(char a, char b) {
   	if (a=='*' || a=='/')
@@ -14,27 +16,8 @@ bool calculator::hasPrecedence(char a, char b) {
   	return false;
 }
 
-void calculator::evaluate(string expr){
-    numStack.clear();
-    opStack.clear();
-    opStack.push('$');
-    int first = 0;
-    string dest = "";
-    
-   //for(int a=0;); // Write the code to scan for =
-    
-    while (first<expr.length()){
-        calculator.processSymbol(expr, first);
-    }
-    
-    while (opStack.peek()!='$'){
-        //perform top operation
-    }
-    
-    if (dest != ""){
-        varList.update(dest, numStack.pop())
-    }
-    
+void calculator::doOp() {
+
 }
 
 void calculator::processSymbol(string expr, int first){
@@ -58,10 +41,61 @@ void calculator::processSymbol(string expr, int first){
             }
             numStack.push(varList.search(varName));
         }
+
+        else if (expr[first] == '(') {
+            opStack.push(expr[first]);
+            first++;
+        }
+
+        else if (expr[first] == ')') {
+            while (opStack.peek() != '(') {
+                myCalculator.doOp();
+            }
+            opStack.pop();
+            first++;
+        }
+
+        else if (expr[first] == ('+' || '-' || '/' || '*')) {
+            while (myCalculator.hasPrecedence(opStack.peek(), expr[first])) {
+                myCalculator.doOp();
+            }
+            opStack.push(expr[first]);
+            first++;
+        }
+
+        else
+            first++;
+    }
+}
+
+void calculator::evaluate(string expr) {
+    numStack.clear();
+    opStack.clear();
+    opStack.push('$');
+    int first = 0;
+    string dest = "";
+
+    for(int i=0; i < expr.length(); i++) {
+        if (expr[i] == '=') {
+            first = i+1;
+            dest; //What do I write here
+        }
+    }
+
+    while (first < expr.length()){
+        myCalculator.processSymbol(expr, first);
+    }
+
+    while (opStack.peek() != '$'){
+        myCalculator.doOp();
+    }
+
+    if (dest != ""){
+        varList.update(dest, numStack.pop());
     }
 }
 
 int main(int argc, char const *argv[]) {
-  
+
   return 0;
-}
+};
