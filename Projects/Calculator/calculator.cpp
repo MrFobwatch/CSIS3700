@@ -16,24 +16,24 @@ bool calculator::hasPrecedence(char a, char b) {
   	return false;
 }
 
-void calculator::doOp() {
+Fraction calculator::doOp() {
     char oper = opStack.pop();
     Fraction y = numStack.pop();  //The form of the operation is x+y, x-y, etc.
     Fraction x = numStack.pop();
     if (oper == '+') {
-        numStack.push(x + y);
+        return(x + y);
     }
 
     else if (oper == '-') {
-        numStack.push(x - y);
+        return(x - y);
     }
 
     else if (oper == '*') {
-        numStack.push(x * y);
+        return(x * y);
     }
 
     else if (oper == '/') {
-        numStack.push(x / y);
+        return(x / y);
     }
 
 }
@@ -67,7 +67,7 @@ void calculator::processSymbol(string expr, int first){
 
         else if (expr[first] == ')') {
             while (opStack.peek() != '(') {
-                myCalculator.doOp();
+                numStack.push(myCalculator.doOp());
             }
             opStack.pop();
             first++;
@@ -75,7 +75,7 @@ void calculator::processSymbol(string expr, int first){
 
         else if (expr[first] == ('+' || '-' || '/' || '*')) {
             while (myCalculator.hasPrecedence(opStack.peek(), expr[first])) {
-                myCalculator.doOp();
+                numStack.push(myCalculator.doOp());
             }
             opStack.push(expr[first]);
             first++;
@@ -96,7 +96,7 @@ void calculator::evaluate(string expr) {
     for(int i=0; i < expr.length(); i++) {
         if (expr[i] == '=') {
             first = i+1;
-            dest; //What do I write here
+            //dest; //What do I write here
         }
     }
 
@@ -105,7 +105,7 @@ void calculator::evaluate(string expr) {
     }
 
     while (opStack.peek() != '$'){
-        myCalculator.doOp();
+        numStack.push(myCalculator.doOp());
     }
 
     if (dest != ""){
