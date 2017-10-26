@@ -102,3 +102,9 @@ fabric.properties
 # End of https://www.gitignore.io/api/clion
 
 Projects/Fractions/\.idea/
+
+*.cpp~
+*.h~
+*.*~
+
+Projects/Calculator/\.idea/

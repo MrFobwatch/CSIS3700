@@ -14,11 +14,6 @@ Point::Point(Fraction xcoord, Fraction ycoord) {
     y = ycoord;
 }
 
-//Point::operator=(const Point &point) {
-//    x = point.x;
-//    y = point.y;
-//}
-
 Point Point::operator+(const Point &point) {
     Fraction xRes,yRes;
     xRes = x + point.x;
