@@ -35,6 +35,9 @@ Fraction calculator::doOp() {
     else if (oper == '/') {
         return(x / y);
     }
+    
+    else 
+        return 0;
 
 }
 
@@ -47,6 +50,7 @@ void calculator::processSymbol(string expr, int first){
                 val=10*val + expr[first]-'0';
                 first++;
                 numStack.push(Fraction(val));
+                std::cout << "Push 1";
             }
         }
 
@@ -97,7 +101,11 @@ void calculator::evaluate(string expr) {
     for(int i=0; i < expr.length(); i++) {
         if (expr[i] == '=') {
             first = i+1;
-            //dest; //What do I write here
+            int destIndex = first;
+            while (destIndex<expr.length() && (isalnum(expr[destIndex] || expr[destIndex]=='_'))) {
+                dest += expr[destIndex];
+                destIndex++;                
+            }
         }
     }
 

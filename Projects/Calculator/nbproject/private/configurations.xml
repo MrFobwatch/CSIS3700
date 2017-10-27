@@ -4,7 +4,6 @@
     <df root="." name="Calculator">
       <in>calculator.cpp</in>
       <in>calculator.h</in>
-      <in>main.cpp</in>
     </df>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
