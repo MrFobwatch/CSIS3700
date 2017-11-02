@@ -24,7 +24,7 @@ public:
 private:
   Stack<Fraction> numStack;
   Stack<char> opStack;
-  UnsortedDictionary<string,Fraction> varList;
+  UnsortedDictionary<string, Fraction> varList;
 
 };
 

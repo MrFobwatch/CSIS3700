@@ -35,32 +35,33 @@ Fraction calculator::doOp() {
     else if (oper == '/') {
         return(x / y);
     }
-    
-    else 
+
+    else
         return 0;
 
 }
 
 void calculator::processSymbol(string expr, int first){
     int val=0;
-    string varName;
+    string varName = "";
     while (first<expr.length()) {
         if (isdigit(expr[first])) {
-            while (first<expr.length() && isdigit(expr[first])) {
+            val=0;
+            while (isdigit(expr[first])) {
                 val=10*val + expr[first]-'0';
                 first++;
-                numStack.push(Fraction(val));
-                std::cout << "Push 1";
             }
+            numStack.push(Fraction(val));
+            first++;
         }
 
-        else if (isalpha(expr[first] || expr[first]=='_')) {
-            varName=expr[first];
-            first++;
-            while (first<expr.length() && (isalnum(expr[first] || expr[first]=='_'))) {
+        else if (isalpha(expr[first]) || expr[first]=='_') {
+            //std::cout << "/* expr = alpha*/" << '\n';
+            while (first<expr.length() && (isalnum(expr[first]) || expr[first]=='_')) {
                 varName += expr[first];
                 first++;
             }
+            //std::cout << "varName: " << varName << '\n';
             numStack.push(varList.search(varName));
         }
 
@@ -77,10 +78,9 @@ void calculator::processSymbol(string expr, int first){
             first++;
         }
 
-        else if (expr[first] == ('+' || '-' || '/' || '*')) {
+        else if (expr[first] == '+' || expr[first] == '-' || expr[first] == '/' || expr[first] == '*') {
             while (myCalculator.hasPrecedence(opStack.peek(), expr[first])) {
                 numStack.push(myCalculator.doOp());
-                first++;//I don't believe this is needed
             }
             opStack.push(expr[first]);
             first++;
@@ -95,30 +95,32 @@ void calculator::evaluate(string expr) {
     numStack.clear();
     opStack.clear();
     opStack.push('$');
-    int first = 0;
+    int first =  0;
     string dest = "";
 
-    for(int i=0; i < expr.length(); i++) {
+    for(int i=first; i < expr.length(); i++) {
         if (expr[i] == '=') {
+            //std::cout << "/* expr = */" << '\n';
             first = i+1;
-            int destIndex = first;
-            while (destIndex<expr.length() && (isalnum(expr[destIndex] || expr[destIndex]=='_'))) {
+            int destIndex = 0;
+            while (destIndex<expr.length() && (isalnum(expr[destIndex]) || expr[destIndex]=='_')) {
+                //std::cout << "Dest +=" << std::endl;
                 dest += expr[destIndex];
-                destIndex++;                
+                destIndex++;
             }
         }
     }
 
-    while (first < expr.length()){
-        myCalculator.processSymbol(expr, first);
-    }
+    myCalculator.processSymbol(expr, first);
 
     while (opStack.peek() != '$'){
         numStack.push(myCalculator.doOp());
     }
 
     if (dest != ""){
-        varList.update(dest, numStack.pop());
+        //std::cout << "varList updated" << '\n';
+        //std::cout << "dest:" << dest << std::endl;
+        varList.insert(dest, numStack.peek());
     }
 
     std::cout << "Ans = " << numStack.peek() << endl;
@@ -126,6 +128,8 @@ void calculator::evaluate(string expr) {
 
 int main(int argc, char const *argv[]) {
     string expr;
+    std::cin >> expr;
+    myCalculator.evaluate(expr);
     std::cin >> expr;
     myCalculator.evaluate(expr);
 
