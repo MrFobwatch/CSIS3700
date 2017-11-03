@@ -1,0 +1,46 @@
+Number everything as -1
+Lava is marked as -2
+Phosdex is 0; Start with it in queue
+Marvin and Duck is 0;
+
+Current location is P change P to location that is +1 from P after assigning value of (p+1) only if they are -1
+
+
+
+
+//
+
+Look at number at Duck Dodgers
+	if -1 he can't reach
+	
+Look at number at Marvin
+	if -1 he can't reach
+	
+//
+
+Add current locatiion to end of list
+	look at any place 1 less then current location
+	add cell location to list
+//
+
+Check for smaller distance
+
+//
+
+Incase of Tie or Duck Losing (Marvin wins Ties)
+	Use Gandalf
+	copy marvin path elsewhere
+	number Gandalf as -3
+	try gandalf in each location on Marvin's path
+	Output the longer path if 
+	Gandalf also blocks duck
+	
+//
+
+Columns have up and down
+
+Rows have left and right
+	Even column numbers have down left and down right
+	Odd column numbers have up left and up right
+
+//
