@@ -1,0 +1,11 @@
+CFLAGS = -I$(HOME)/Programming/include -c
+LFLAGS = -L$(HOME)/Programming/lib
+LIBS = -ldataStructures
+calculator: calculator.o
+	g++ -o calculator $(LFLAGS) calculator.o $(LIBS)
+
+calculator.o: calculator.cpp
+	g++ $(CFLAGS) calculator.cpp -Wno-deprecated
+
+run:
+		calculator.exe

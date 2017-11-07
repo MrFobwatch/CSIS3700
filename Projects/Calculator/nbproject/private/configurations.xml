@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="89">
+<configurationDescriptor version="100">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <df root="." name="Calculator">
+    <df root="." name="0">
+      <df name=".idea">
+      </df>
+      <df name="cmake-build-debug">
+        <df name="CMakeFiles">
+          <df name="3.8.2">
+            <df name="CompilerIdC">
+              <df name="tmp">
+              </df>
+              <in>CMakeCCompilerId.c</in>
+            </df>
+            <df name="CompilerIdCXX">
+              <df name="tmp">
+              </df>
+              <in>CMakeCXXCompilerId.cpp</in>
+            </df>
+          </df>
+          <df name="Calculator.dir">
+          </df>
+          <df name="CMakeTmp">
+          </df>
+          <df name="Progress">
+          </df>
+          <in>feature_tests.c</in>
+          <in>feature_tests.cxx</in>
+        </df>
+      </df>
       <in>calculator.cpp</in>
       <in>calculator.h</in>
     </df>
@@ -11,7 +37,7 @@
     <conf name="Default" type="0">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
-        <platform>2</platform>
+        <platform>3</platform>
       </toolsSet>
       <compile>
         <compiledirpicklist>
@@ -21,9 +47,13 @@
         <compiledir>${AUTO_FOLDER}</compiledir>
         <compilecommandpicklist>
           <compilecommandpicklistitem>${MAKE} ${ITEM_NAME}.o</compilecommandpicklistitem>
+          <compilecommandpicklistitem>${MAKE} ${ITEM_NAME}.o -</compilecommandpicklistitem>
+          <compilecommandpicklistitem>${AUTO_COMPILE} </compilecommandpicklistitem>
+          <compilecommandpicklistitem>${MAKE} ${ITEM_NAME}.o -Wno-deprecated</compilecommandpicklistitem>
           <compilecommandpicklistitem>${AUTO_COMPILE}</compilecommandpicklistitem>
+          <compilecommandpicklistitem>${AUTO_COMPILE} -Wno-deprecated</compilecommandpicklistitem>
         </compilecommandpicklist>
-        <compilecommand>${AUTO_COMPILE}</compilecommand>
+        <compilecommand>${AUTO_COMPILE} -Wno-deprecated</compilecommand>
       </compile>
       <dbx_gdbdebugger version="1">
         <gdb_pathmaps>
@@ -31,6 +61,8 @@
         <gdb_interceptlist>
           <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
         </gdb_interceptlist>
+        <gdb_signals>
+        </gdb_signals>
         <gdb_options>
           <DebugOptions>
           </DebugOptions>
