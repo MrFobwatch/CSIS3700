@@ -34,11 +34,22 @@ void duckDodgers::genMap() {
     map[startPhos.row][startPhos.column] = 0;
 }
 
-void duckDodgers::genPaths() {
-
+void duckDodgers::lookAtNeighbors(Coordinate cell) {
+    neighborCells.enqueue(Coordinate(((cell.column)), (cell.row - 1))); //north
+    if (cell.column % 2) { //Odd columns have north east and north west
+        neighborCells.enqueue(Coordinate(((cell.column) + 1), (cell.row - 1))); //north east
+        neighborCells.enqueue(Coordinate(((cell.column) - 1), (cell.row - 1))); //north west
+    }
+    else {
+        neighborCells.enqueue(Coordinate(((cell.column) + 1), (cell.row + 1))); //south east
+        neighborCells.enqueue(Coordinate(((cell.column) - 1), (cell.row + 1))); //south west
+    }
+    neighborCells.enqueue(Coordinate(((cell.column)+1), (cell.row))); //east
+    neighborCells.enqueue(Coordinate(((cell.column)-1), (cell.row))); //west
+    neighborCells.enqueue(Coordinate(((cell.column)), (cell.row+1))); //south
 }
 
-void duckDodgers::lookAtNeighbors() {
+void duckDodgers::genPaths() {
 
 }
 
