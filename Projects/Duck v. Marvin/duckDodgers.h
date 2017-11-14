@@ -26,7 +26,9 @@ private:
                startPhos;
 
     int numLava;
-    LinearList<Coordinate> lavaList;
+    Queue<Coordinate> lavaCells;
+    Queue<Coordinate> pathDuck,
+                      pathMarvin;
 };
 
 struct Coordinate {
