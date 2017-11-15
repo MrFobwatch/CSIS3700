@@ -14,8 +14,9 @@ public:
     void getInput(); //gets values of Marvin and Duck location and creates Lava Cell info
     void genMap(); //sets locations of lava and assigns known values
     void lookAtNeighbors(Coordinate cell);  //adds cells to a queue for checking
-    void genPaths(); //runs BreadthFirstSearch
-    void assignValue(); //parses a queue and sets values. Once empty exit function
+    void fillMap(Coordinate startCell); //runs BreadthFirstSearch
+    void assignValue(Coordinate cell, int value); //parses a queue and sets values. Once empty exit function
+    void createPaths(Coordinate cell); //generates a list of the path to goal
     void placeGandalf(); //takes marvin path and runs genPath for each cell in the path
     void outputResults(); //Returns all necessary info
 
@@ -28,9 +29,9 @@ private:
     int numLava;
     Queue<Coordinate> lavaCells;
     Queue<Coordinate> neighborCells;
-    Queue<Coordinate> pathDuck,
+    Queue<Coordinate> searchPath,
+                      pathDuck,
                       pathMarvin;
-    LinearList<Coordinate> searchPath;
 };
 
 struct Coordinate {

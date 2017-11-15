@@ -34,7 +34,7 @@ void duckDodgers::genMap() {
     map[startPhos.row][startPhos.column] = 0;
 }
 
-void duckDodgers::lookAtNeighbors(Coordinate cell) {
+void duckDodgers::lookAtNeighbors(Coordinate cell) { //Does not respect edges of map
     neighborCells.enqueue(Coordinate(((cell.column)), (cell.row - 1))); //north
     if (cell.column % 2) { //Odd columns have north east and north west
         neighborCells.enqueue(Coordinate(((cell.column) + 1), (cell.row - 1))); //north east
@@ -49,11 +49,33 @@ void duckDodgers::lookAtNeighbors(Coordinate cell) {
     neighborCells.enqueue(Coordinate(((cell.column)), (cell.row+1))); //south
 }
 
-void duckDodgers::genPaths() {
+void duckDodgers::fillMap(Coordinate startCell) { //Fills in the map starting from initial cell
+    //Coordinate currentCell = startCell;
+    int cellValue = 0;
+    searchPath.enqueue(startCell);
+    assignValue(startCell, cellValue);
+    lookAtNeighbors(startCell);
+    while (! searchPath.isEmpty()) {
+        Coordinate currentCell = searchPath.dequeue();
+        int currentCellValue = map[currentCell.row][currentCell.column];
+        for (int i = 0; i < neighborCells.size(); ++i) {
+            Coordinate neighborCell = neighborCells.dequeue();
+            assignValue(neighborCell, cellValue); //marks as visited by assign values to neighboring cells. assignValue checks for preexisting value
+            int neighborCellValue = map[neighborCell.row][neighborCell.column];
+            if (currentCellValue+1 == (neighborCellValue)) { //add neighbor to queue if it is 1 farther from current cell
+                searchPath.enqueue(neighborCell);
+            }
+        }
+        cellValue++;
+    }
 
 }
 
-void duckDodgers::assignValue() {
+void duckDodgers::createPaths(Coordinate cell) {
+
+}
+
+void duckDodgers::assignValue(Coordinate cell, int value) {
 
 }
 
