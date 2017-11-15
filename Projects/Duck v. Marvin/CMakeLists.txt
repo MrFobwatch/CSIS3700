@@ -3,7 +3,7 @@ project(Duck_v__Marvin)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES duckDodgers.cpp duckDodgers.h)
+set(SOURCE_FILES duckDodgers.cpp duckDodgers.h main.cpp)
 
 #target_link_libraries(dataStructures $ENV{HOME}/Programming/lib/libdataStructures.a)
 

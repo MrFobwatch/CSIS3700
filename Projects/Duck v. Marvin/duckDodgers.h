@@ -9,6 +9,20 @@
 #include "queue.h"
 #include "list.h"
 
+struct Coordinate {
+    int row, column;
+    Coordinate(int row, int column) : row(row), column(column) {}
+    Coordinate() {row = 0; column = 0;}
+
+    bool operator==(const Coordinate& other) const {
+        return other.row == row && other.column == column;
+    }
+
+    bool operator!=(const Coordinate& other) const {
+        return !(*this == other);
+    }
+};
+
 class duckDodgers {
 public:
     void getInput(); //gets values of Marvin and Duck location and creates Lava Cell info
@@ -32,18 +46,6 @@ private:
     Queue<Coordinate> searchPath,
                       pathDuck,
                       pathMarvin;
-};
-
-struct Coordinate {
-    int row, column;
-    Coordinate(int row, int column) : row(row), column(column) {}
-    bool operator==(const Coordinate& other) const {
-        return other.row == row && other.column == column;
-    }
-
-    bool operator!=(const Coordinate& other) const {
-        return !(*this == other);
-    }
 };
 
 #endif //DUCK_V_MARVIN_DUCKDODGERS_H
