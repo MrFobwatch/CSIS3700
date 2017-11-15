@@ -34,7 +34,7 @@ public:
     void placeGandalf(); //takes marvin path and runs genPath for each cell in the path
     void outputResults(); //Returns all necessary info
 
-private:
+public:
     int map[20][20];
     Coordinate startDuck,
                startMarvin,
