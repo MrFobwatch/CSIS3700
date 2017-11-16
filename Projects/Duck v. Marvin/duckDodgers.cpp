@@ -35,19 +35,35 @@ void duckDodgers::genMap() {
 }
 
 void duckDodgers::lookAtNeighbors(Coordinate cell) { //Does not respect edges of map
-    //add conditionals to only enqueue if the cell value is -1
-    neighborCells.enqueue(Coordinate((cell.row - 1), (cell.column))); //north
+    //conditionals only enqueue if the cell value is -1
+    if (map[cell.row - 1][cell.column] == -1) {
+        neighborCells.enqueue(Coordinate((cell.row - 1), (cell.column))); //north
+    }
     if (cell.column % 2) { //Odd columns have north east and north west
-        neighborCells.enqueue(Coordinate((cell.row - 1), ((cell.column) + 1))); //north east
-        neighborCells.enqueue(Coordinate((cell.row - 1), ((cell.column) - 1))); //north west
+        if (map[cell.row - 1][cell.column + 1] == -1) {
+            neighborCells.enqueue(Coordinate((cell.row - 1), ((cell.column) + 1))); //north east
+        }
+        if (map[cell.row - 1][cell.column -1] == -1) {
+            neighborCells.enqueue(Coordinate((cell.row - 1), ((cell.column) - 1))); //north west
+        }
     }
     else {
-        neighborCells.enqueue(Coordinate((cell.row + 1), ((cell.column) + 1))); //south east
-        neighborCells.enqueue(Coordinate((cell.row + 1), ((cell.column) - 1))); //south west
+        if (map[cell.row + 1][cell.column + 1] == -1) {
+            neighborCells.enqueue(Coordinate((cell.row + 1), ((cell.column) + 1))); //south east
+        }
+        if (map[cell.row + 1][cell.column - 1] == -1) {
+            neighborCells.enqueue(Coordinate((cell.row + 1), ((cell.column) - 1))); //south west
+        }
     }
-    neighborCells.enqueue(Coordinate((cell.row), ((cell.column)+1))); //east
-    neighborCells.enqueue(Coordinate((cell.row), ((cell.column)-1))); //west
-    neighborCells.enqueue(Coordinate((cell.row+1), ((cell.column)))); //south
+    if (map[cell.row][cell.column + 1] == -1) {
+        neighborCells.enqueue(Coordinate((cell.row), ((cell.column)+1))); //east
+    }
+    if (map[cell.row][cell.column - 1] == -1) {
+        neighborCells.enqueue(Coordinate((cell.row), ((cell.column)-1))); //west
+    }
+    if (map[cell.row + 1][cell.column] == -1) {
+        neighborCells.enqueue(Coordinate((cell.row+1), ((cell.column)))); //south
+    }
 }
 
 void duckDodgers::fillMap(Coordinate startCell) { //Fills in the map starting from initial cell
