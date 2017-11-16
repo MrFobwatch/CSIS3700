@@ -34,7 +34,7 @@ void duckDodgers::genMap() {
     map[startPhos.row][startPhos.column] = 0;
 }
 
-void duckDodgers::lookAtNeighbors(Coordinate cell) { //Does not respect edges of map
+void duckDodgers::lookAtNeighbors(Coordinate cell) { //Does not respect edges of map yet
     //conditionals only enqueue if the cell value is -1
     if (map[cell.row - 1][cell.column] == -1) {
         neighborCells.enqueue(Coordinate((cell.row - 1), (cell.column))); //north
@@ -82,12 +82,7 @@ void duckDodgers::fillMap(Coordinate startCell) { //Fills in the map starting fr
             if ((neighborCellValue == -1)) {
                 assignValue(neighborCell, cellValue); //marks as visited by assign values to neighboring cells. assignValue checks for preexisting value
                 searchPath.enqueue(neighborCell);
-
-            }
-            neighborCellValue = map[neighborCell.row][neighborCell.column];
-
-            if (((neighborCellValue) == (currentCellValue+1))) { //add neighbor to queue if it is 1 farther from current cell
-                searchPath.enqueue(neighborCell);
+                lookAtNeighbors(neighborCell);
             }
         }
         cellValue++;
@@ -100,7 +95,9 @@ void duckDodgers::createPaths(Coordinate cell) {
 }
 
 void duckDodgers::assignValue(Coordinate cell, int value) {
-    map[cell.row][cell.column] = value;
+    if (map[cell.row][cell.column] == -1) {
+        map[cell.row][cell.column] = value;
+    }
 }
 
 void duckDodgers::placeGandalf() {
