@@ -74,3 +74,10 @@ while map[r][c] > 0 {
 	r=r'
 	c=c'
 }
+//
+neighbors of (r,c)
+dr = (c&1)?drOdd:drEven;
+for (i=0; i<6; i++) {
+	nr=r+dr[i];
+	nc=c+dc[i];
+}

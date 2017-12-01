@@ -28,52 +28,61 @@ void duckDodgers::genMap() {
         map[lavaLocation.row][lavaLocation.column] = -2;
     }
 
-    map[startDuck.row][startDuck.column] = 0;
+//    map[startDuck.row][startDuck.column] = 0;
 
-    map[startMarvin.row][startMarvin.column] = 0;
+//    map[startMarvin.row][startMarvin.column] = 0;
 
     map[startPhos.row][startPhos.column] = 0;
 }
 
-void duckDodgers::enqueueNeighborsCells(Coordinate cell) {
+void duckDodgers::enqueueNeighborsCells(Coordinate cell, bool assignVal) {
     //conditionals only enqueue if the cell value is -1
     //also assigns values of enqueued cells
+	//assignVal determines if values are assigned
 
-    if (map[cell.row - 1][cell.column] == -1) {
+    if (map[cell.row - 1][cell.column] == -1 || !assignVal) {
         queue.enqueue(Coordinate((cell.row - 1), (cell.column))); //north
-        assignValue(Coordinate((cell.row - 1), (cell.column)), map[cell.row][cell.column] + 1);
+        if (assignVal)
+        	assignValue(Coordinate((cell.row - 1), (cell.column)), map[cell.row][cell.column] + 1);
     }
     if ((cell.column == 1) || (cell.column % 2 == 0)) { //Odd columns have north east and north west
-        if (map[cell.row - 1][cell.column + 1] == -1) {
+        if (map[cell.row - 1][cell.column + 1] == -1 || !assignVal) {
             queue.enqueue(Coordinate((cell.row - 1), ((cell.column) + 1))); //north east
-            assignValue(Coordinate((cell.row - 1), ((cell.column) + 1)), map[cell.row][cell.column] + 1);
+            if (assignVal)
+            	assignValue(Coordinate((cell.row - 1), ((cell.column) + 1)), map[cell.row][cell.column] + 1);
         }
-        if (map[cell.row - 1][cell.column - 1] == -1) {
+        if (map[cell.row - 1][cell.column - 1] == -1 || !assignVal) {
             queue.enqueue(Coordinate((cell.row - 1), ((cell.column) - 1))); //north west
-            assignValue(Coordinate((cell.row - 1), ((cell.column) - 1)), map[cell.row][cell.column] + 1);
+            if (assignVal)
+            	assignValue(Coordinate((cell.row - 1), ((cell.column) - 1)), map[cell.row][cell.column] + 1);
         }
     }
     else {
-        if (map[cell.row + 1][cell.column + 1] == -1) {
+        if (map[cell.row + 1][cell.column + 1] == -1 || !assignVal) {
             queue.enqueue(Coordinate((cell.row + 1), ((cell.column) + 1))); //south east
-            assignValue(Coordinate((cell.row + 1), ((cell.column) + 1)), map[cell.row][cell.column] + 1);
+            if (assignVal)
+            	assignValue(Coordinate((cell.row + 1), ((cell.column) + 1)), map[cell.row][cell.column] + 1);
         }
-        if (map[cell.row + 1][cell.column - 1] == -1) {
+        if (map[cell.row + 1][cell.column - 1] == -1 || !assignVal) {
             queue.enqueue(Coordinate((cell.row + 1), ((cell.column) - 1))); //south west
-            assignValue(Coordinate((cell.row + 1), ((cell.column) - 1)), map[cell.row][cell.column] + 1);
+            if (assignVal)
+            	assignValue(Coordinate((cell.row + 1), ((cell.column) - 1)), map[cell.row][cell.column] + 1);
         }
     }
-    if (map[cell.row][cell.column + 1] == -1) {
+    if (map[cell.row][cell.column + 1] == -1 || !assignVal) {
         queue.enqueue(Coordinate((cell.row), ((cell.column) + 1))); //east
-        assignValue(Coordinate((cell.row), ((cell.column) + 1)), map[cell.row][cell.column] + 1);
+        if (assignVal)
+        	assignValue(Coordinate((cell.row), ((cell.column) + 1)), map[cell.row][cell.column] + 1);
     }
-    if (map[cell.row][cell.column - 1] == -1) {
+    if (map[cell.row][cell.column - 1] == -1 || !assignVal) {
         queue.enqueue(Coordinate((cell.row), ((cell.column) - 1))); //west
-        assignValue(Coordinate((cell.row), ((cell.column) - 1)), map[cell.row][cell.column] + 1);
+        if (assignVal)
+        	assignValue(Coordinate((cell.row), ((cell.column) - 1)), map[cell.row][cell.column] + 1);
     }
-    if (map[cell.row + 1][cell.column] == -1) {
+    if (map[cell.row + 1][cell.column] == -1 || !assignVal) {
         queue.enqueue(Coordinate((cell.row + 1), ((cell.column)))); //south
-        assignValue(Coordinate((cell.row + 1), ((cell.column))), map[cell.row][cell.column] + 1);
+        if (assignVal)
+        	assignValue(Coordinate((cell.row + 1), ((cell.column))), map[cell.row][cell.column] + 1);
     }
 }
 
@@ -82,7 +91,7 @@ void duckDodgers::fillMap(Coordinate startCell) { //Fills in the map starting fr
     int cellValue = 1;
     queue.enqueue(startCell);
     assignValue(startCell, 0);
-    enqueueNeighborsCells(startCell);
+    enqueueNeighborsCells(startCell, true);
     while (!queue.isEmpty()) {
         Coordinate currentCell = queue.dequeue();
 //        int currentCellValue = map[currentCell.row][currentCell.column];
@@ -93,7 +102,7 @@ void duckDodgers::fillMap(Coordinate startCell) { //Fills in the map starting fr
 //            if ((nextCellValue == -1 || nextCellValue > cellValue)) {
                 assignValue(nextCell, cellValue); //marks as visited by assign values to neighboring cells. assignValue checks for preexisting value
                 queue.enqueue(nextCell);
-                enqueueNeighborsCells(nextCell);
+                enqueueNeighborsCells(nextCell, true);
 //            }
         }
         cellValue++;
@@ -101,7 +110,30 @@ void duckDodgers::fillMap(Coordinate startCell) { //Fills in the map starting fr
 
 }
 
-void duckDodgers::createPaths(Coordinate cell) {
+void duckDodgers::fillPath(Coordinate start, LinearList<Coordinate> path) {
+	path.insert(1, start);
+	int currentCellValue = map[start.row][start.column];
+	//Look at neighbor
+	enqueueNeighborsCells(start, false);
+	//find one less
+	while (!queue.isEmpty()) {
+		Coordinate nextCell = queue.dequeue();
+		int nextCellValue = map[nextCell.row][nextCell.column];
+		if (nextCellValue == (currentCellValue - 1)) {
+			//add to list
+			path.insert(1, nextCell);
+			queue.clear();
+			currentCellValue = nextCellValue;
+			//look at neighbors of newly added cell
+			enqueueNeighborsCells(nextCell, false);
+		}
+		//repeat until newly added cell == 0 (goal)
+		if (currentCellValue == 0) {
+			queue.clear();
+		}
+
+		//if no neighbor is 1 less or (something I can't recall) no path
+	}
 
 }
 
