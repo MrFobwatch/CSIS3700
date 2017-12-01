@@ -1,7 +1,7 @@
 getInput() //sets values of Marvin and Duck with info and creates Lava Cell info
 genMap() //sets locations of lava and assigns value
 fillMap() //runs BreadthFirstSearch
-lookAtNeighbors() //adds cells to a queue
+enqueueNeighborsCells() //adds cells to a queue
 assignValue() //parses a queue and sets values. Once empty exit function
 placeGandalf() // takes marvin path and runs genPath for each cell in the path
 outPutResults() //

@@ -9,7 +9,7 @@ void duckDodgers::getInput() {
     std::cin >> startMarvin.row >> startMarvin.column;
     std::cin >> startPhos.row >> startPhos.column;
     std::cin >> numLava;
-    for (int i = 0; i < numLava; ++i) {
+    for (int i = 0; i <= numLava - 1; ++i) {
         int row, column;
         std::cin >> row >> column;
         lavaCells.enqueue(Coordinate(row,column));
@@ -22,7 +22,8 @@ void duckDodgers::genMap() {
             map[row][col] = -1;
         }
     }
-    for (int i = 0; i < lavaCells.size(); ++i) { //Set the values of each lava cell to -2
+    int lavaCellsCount = lavaCells.size();
+    for (int i = 0; i < lavaCellsCount; ++i) { //Set the values of each lava cell to -2
         Coordinate lavaLocation = lavaCells.dequeue();
         map[lavaLocation.row][lavaLocation.column] = -2;
     }
@@ -34,56 +35,66 @@ void duckDodgers::genMap() {
     map[startPhos.row][startPhos.column] = 0;
 }
 
-void duckDodgers::lookAtNeighbors(Coordinate cell) { //Does not respect edges of map yet
+void duckDodgers::enqueueNeighborsCells(Coordinate cell) {
     //conditionals only enqueue if the cell value is -1
+    //also assigns values of enqueued cells
+
     if (map[cell.row - 1][cell.column] == -1) {
-        neighborCells.enqueue(Coordinate((cell.row - 1), (cell.column))); //north
+        queue.enqueue(Coordinate((cell.row - 1), (cell.column))); //north
+        assignValue(Coordinate((cell.row - 1), (cell.column)), map[cell.row][cell.column] + 1);
     }
-    if (cell.column % 2) { //Odd columns have north east and north west
+    if ((cell.column == 1) || (cell.column % 2 == 0)) { //Odd columns have north east and north west
         if (map[cell.row - 1][cell.column + 1] == -1) {
-            neighborCells.enqueue(Coordinate((cell.row - 1), ((cell.column) + 1))); //north east
+            queue.enqueue(Coordinate((cell.row - 1), ((cell.column) + 1))); //north east
+            assignValue(Coordinate((cell.row - 1), ((cell.column) + 1)), map[cell.row][cell.column] + 1);
         }
-        if (map[cell.row - 1][cell.column -1] == -1) {
-            neighborCells.enqueue(Coordinate((cell.row - 1), ((cell.column) - 1))); //north west
+        if (map[cell.row - 1][cell.column - 1] == -1) {
+            queue.enqueue(Coordinate((cell.row - 1), ((cell.column) - 1))); //north west
+            assignValue(Coordinate((cell.row - 1), ((cell.column) - 1)), map[cell.row][cell.column] + 1);
         }
     }
     else {
         if (map[cell.row + 1][cell.column + 1] == -1) {
-            neighborCells.enqueue(Coordinate((cell.row + 1), ((cell.column) + 1))); //south east
+            queue.enqueue(Coordinate((cell.row + 1), ((cell.column) + 1))); //south east
+            assignValue(Coordinate((cell.row + 1), ((cell.column) + 1)), map[cell.row][cell.column] + 1);
         }
         if (map[cell.row + 1][cell.column - 1] == -1) {
-            neighborCells.enqueue(Coordinate((cell.row + 1), ((cell.column) - 1))); //south west
+            queue.enqueue(Coordinate((cell.row + 1), ((cell.column) - 1))); //south west
+            assignValue(Coordinate((cell.row + 1), ((cell.column) - 1)), map[cell.row][cell.column] + 1);
         }
     }
     if (map[cell.row][cell.column + 1] == -1) {
-        neighborCells.enqueue(Coordinate((cell.row), ((cell.column) + 1))); //east
+        queue.enqueue(Coordinate((cell.row), ((cell.column) + 1))); //east
+        assignValue(Coordinate((cell.row), ((cell.column) + 1)), map[cell.row][cell.column] + 1);
     }
     if (map[cell.row][cell.column - 1] == -1) {
-        neighborCells.enqueue(Coordinate((cell.row), ((cell.column) - 1))); //west
+        queue.enqueue(Coordinate((cell.row), ((cell.column) - 1))); //west
+        assignValue(Coordinate((cell.row), ((cell.column) - 1)), map[cell.row][cell.column] + 1);
     }
     if (map[cell.row + 1][cell.column] == -1) {
-        neighborCells.enqueue(Coordinate((cell.row + 1), ((cell.column)))); //south
+        queue.enqueue(Coordinate((cell.row + 1), ((cell.column)))); //south
+        assignValue(Coordinate((cell.row + 1), ((cell.column))), map[cell.row][cell.column] + 1);
     }
 }
 
 void duckDodgers::fillMap(Coordinate startCell) { //Fills in the map starting from initial cell
     //Coordinate currentCell = startCell;
     int cellValue = 1;
-    searchPath.enqueue(startCell);
+    queue.enqueue(startCell);
     assignValue(startCell, 0);
-    lookAtNeighbors(startCell);
-    while (!searchPath.isEmpty()) {
-        Coordinate currentCell = searchPath.dequeue();
-        int currentCellValue = map[currentCell.row][currentCell.column];
-
-        for (int i = 0; i < neighborCells.size(); ++i) {
-            Coordinate neighborCell = neighborCells.dequeue();
-            int neighborCellValue = map[neighborCell.row][neighborCell.column];
             if ((neighborCellValue == -1)) {
-                assignValue(neighborCell, cellValue); //marks as visited by assign values to neighboring cells. assignValue checks for preexisting value
-                searchPath.enqueue(neighborCell);
-                lookAtNeighbors(neighborCell);
             }
+    enqueueNeighborsCells(startCell);
+    while (!queue.isEmpty()) {
+        Coordinate currentCell = queue.dequeue();
+//        int currentCellValue = map[currentCell.row][currentCell.column];
+
+        for (int i = 0; i < queue.size(); ++i) {
+            Coordinate nextCell = queue.dequeue();
+            int nextCellValue = map[nextCell.row][nextCell.column];
+                assignValue(nextCell, cellValue); //marks as visited by assign values to neighboring cells. assignValue checks for preexisting value
+                queue.enqueue(nextCell);
+                enqueueNeighborsCells(nextCell);
         }
         cellValue++;
     }

@@ -27,11 +27,11 @@ class duckDodgers {
 public:
     void getInput(); //gets values of Marvin and Duck location and creates Lava Cell info
     void genMap(); //sets locations of lava and assigns known values
-    void lookAtNeighbors(Coordinate cell);  //adds cells to a queue for checking
+    void enqueueNeighborsCells(Coordinate cell);  //adds cells to a queue for checking and marks as visited
     void fillMap(Coordinate startCell); //runs BreadthFirstSearch
-    void assignValue(Coordinate cell, int value); //parses a queue and sets values. Once empty exit function
+    void assignValue(Coordinate cell, int value); //simply applies a value to a given cell if it has no value
     void createPaths(Coordinate cell); //generates a list of the path to goal
-    void placeGandalf(); //takes marvin path and runs genPath for each cell in the path
+    void placeGandalf(); //takes marvin path and runs fill map for each cell in the path with gandalf in it
     void outputResults(); //Returns all necessary info
 
 public:
@@ -42,8 +42,8 @@ public:
 
     int numLava;
     Queue<Coordinate> lavaCells;
-    Queue<Coordinate> neighborCells;
-    Queue<Coordinate> searchPath,
+//    Queue<Coordinate> neighborCells;
+    Queue<Coordinate> queue,
                       pathDuck,
                       pathMarvin;
 };
