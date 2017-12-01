@@ -82,8 +82,6 @@ void duckDodgers::fillMap(Coordinate startCell) { //Fills in the map starting fr
     int cellValue = 1;
     queue.enqueue(startCell);
     assignValue(startCell, 0);
-            if ((neighborCellValue == -1)) {
-            }
     enqueueNeighborsCells(startCell);
     while (!queue.isEmpty()) {
         Coordinate currentCell = queue.dequeue();
@@ -92,9 +90,11 @@ void duckDodgers::fillMap(Coordinate startCell) { //Fills in the map starting fr
         for (int i = 0; i < queue.size(); ++i) {
             Coordinate nextCell = queue.dequeue();
             int nextCellValue = map[nextCell.row][nextCell.column];
+//            if ((nextCellValue == -1 || nextCellValue > cellValue)) {
                 assignValue(nextCell, cellValue); //marks as visited by assign values to neighboring cells. assignValue checks for preexisting value
                 queue.enqueue(nextCell);
                 enqueueNeighborsCells(nextCell);
+//            }
         }
         cellValue++;
     }
@@ -106,8 +106,10 @@ void duckDodgers::createPaths(Coordinate cell) {
 }
 
 void duckDodgers::assignValue(Coordinate cell, int value) {
-    if (map[cell.row][cell.column] == -1) {
-        map[cell.row][cell.column] = value;
+    if (cell.row < 20 && cell.column < 20) {
+        if (map[cell.row][cell.column] == -1) {
+            map[cell.row][cell.column] = value;
+        }
     }
 }
 
