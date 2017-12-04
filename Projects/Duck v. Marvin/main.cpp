@@ -21,6 +21,9 @@ int main () {
     duckDodgers.genMap();
     duckDodgers.fillMap(duckDodgers.startPhos);
     output2dArray(duckDodgers.map, 20);
+    duckDodgers.fillPath(duckDodgers.startMarvin, duckDodgers.pathMarvin);
+    duckDodgers.fillPath(duckDodgers.startDuck, duckDodgers.pathDuck);
+    duckDodgers.outputResults();
     int val;
     cin >> val;
     return 0;

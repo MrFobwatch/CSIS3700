@@ -95,8 +95,8 @@ void duckDodgers::fillMap(Coordinate startCell) { //Fills in the map starting fr
     while (!queue.isEmpty()) {
         Coordinate currentCell = queue.dequeue();
 //        int currentCellValue = map[currentCell.row][currentCell.column];
-
-        for (int i = 0; i < queue.size(); ++i) {
+        int queueSize = queue.size();
+        for (int i = 0; i < queueSize; ++i) {
             Coordinate nextCell = queue.dequeue();
             int nextCellValue = map[nextCell.row][nextCell.column];
 //            if ((nextCellValue == -1 || nextCellValue > cellValue)) {
@@ -110,8 +110,9 @@ void duckDodgers::fillMap(Coordinate startCell) { //Fills in the map starting fr
 
 }
 
-void duckDodgers::fillPath(Coordinate start, LinearList<Coordinate> path) {
-	path.insert(1, start);
+void duckDodgers::fillPath(Coordinate start, LinearList<Coordinate>& path) {
+	path.insert(0, start);
+    int index = 1;
 	int currentCellValue = map[start.row][start.column];
 	//Look at neighbor
 	enqueueNeighborsCells(start, false);
@@ -121,8 +122,9 @@ void duckDodgers::fillPath(Coordinate start, LinearList<Coordinate> path) {
 		int nextCellValue = map[nextCell.row][nextCell.column];
 		if (nextCellValue == (currentCellValue - 1)) {
 			//add to list
-			path.insert(1, nextCell);
-			queue.clear();
+			path.insert(index, nextCell);
+			index++;
+            queue.clear();
 			currentCellValue = nextCellValue;
 			//look at neighbors of newly added cell
 			enqueueNeighborsCells(nextCell, false);
@@ -150,5 +152,27 @@ void duckDodgers::placeGandalf() {
 }
 
 void duckDodgers::outputResults() {
+    std::string winner;
+    if (pathDuck.size() != pathMarvin.size()) {
+        winner = pathDuck.size() > pathMarvin.size() ? "Marvin the Martian" : "Duck Dodgers";
+    }
+    else {
+        winner = "Marvin the Martian";
+    }
+    std::cout << winner << " reaches the Illudium Phosdex first." << std::endl;
+    std::cout << "Duck Dodgers' path:" << std::endl;
+    for (int i = 0; i < pathDuck.size(); ++i) {
+        std::cout << pathDuck[i].row << "," << pathDuck[i].column << " - ";
+    }
+    std::cout << std::endl;
+    std::cout << "Marvin the Martian's path:" << std::endl;
+    for (int i = 0; i < pathMarvin.size(); ++i) {
+        std::cout << pathMarvin[i].row << "," << pathMarvin[i].column << " - ";
+    }
+
+
+    placeGandalf();
+
+
 
 }
