@@ -32,7 +32,7 @@ Incase of Tie or Duck Losing (Marvin wins Ties)
 	copy marvin path elsewhere
 	number Gandalf as -3
 	try gandalf in each location on Marvin's path
-	Output the longer path if
+	Output the longer path if it exists
 	Gandalf also blocks duck
 
 //

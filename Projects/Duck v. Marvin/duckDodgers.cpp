@@ -148,7 +148,34 @@ void duckDodgers::assignValue(Coordinate cell, int value) {
 }
 
 void duckDodgers::placeGandalf() {
-
+    LinearList<Coordinate> pathMarvinOld = pathMarvin;
+    for (int i = 0; i < pathMarvinOld.size(); ++i) {
+        //Try gandalf in each space on Marvins' Path
+        Coordinate gandalfCell = pathMarvinOld[i];
+        map[gandalfCell.row][gandalfCell.column] = -2;
+        //Recalculate Paths
+        fillMap(startPhos);
+        pathMarvin.clear();
+        fillPath(startMarvin, pathMarvin);
+        pathDuck.clear();
+        fillPath(startDuck, pathDuck);
+        //check to see if Duck wins
+        if (pathDuck.size() < pathMarvin.size()) {
+            std::cout << "Duck Dodgers summons Gandalf the Grey to cell " << gandalfCell.row << "," << gandalfCell.column;
+            std::cout << "Duck Dodgers' new path:" << std::endl;
+            for (int i = 0; i < pathDuck.size(); ++i) {
+                std::cout << pathDuck[i].row << "," << pathDuck[i].column << " - ";
+            }
+            std::cout << "Marvin the Martian's new path:" << std::endl;
+            for (int i = 0; i < pathMarvin.size(); ++i) {
+                std::cout << pathMarvin[i].row << "," << pathMarvin[i].column << " - ";
+            }
+            break;
+        }
+        //remove gandalf from current position
+        map[gandalfCell.row][gandalfCell.column] = -1;
+    }
+    std::cout << "Gandalf cannot help" << std::endl;
 }
 
 void duckDodgers::outputResults() {
@@ -169,9 +196,10 @@ void duckDodgers::outputResults() {
     for (int i = 0; i < pathMarvin.size(); ++i) {
         std::cout << pathMarvin[i].row << "," << pathMarvin[i].column << " - ";
     }
-
-
-    placeGandalf();
+    //attempt to place Gandalf
+    if (winner == "Marvin the Martin") {
+        placeGandalf();
+    }
 
 
 
