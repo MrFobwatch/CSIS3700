@@ -1,11 +1,12 @@
 cmake_minimum_required(VERSION 2.2)
 project(Duck_v__Marvin)
 
-set(CMAKE_CXX_STANDARD 11)
-
+#set(CMAKE_CXX_STANDARD 11)
+SET(CMAKE_CXX_FLAGS "-std=c++11")
 set(SOURCE_FILES duckDodgers.cpp duckDodgers.h main.cpp)
 
 #target_link_libraries(dataStructures $ENV{HOME}/Programming/lib/libdataStructures.a)
+set(CMAKE_LEGACY_CYGWIN_WIN32 0)
 
 include_directories($ENV{HOME}/Programming/include)
 
