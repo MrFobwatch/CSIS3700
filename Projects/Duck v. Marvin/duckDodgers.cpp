@@ -152,6 +152,7 @@ void duckDodgers::placeGandalf() {
     for (int i = 0; i < pathMarvinOld.size(); ++i) {
         //Try gandalf in each space on Marvins' Path
         Coordinate gandalfCell = pathMarvinOld[i];
+        genMap();
         map[gandalfCell.row][gandalfCell.column] = -2;
         //Recalculate Paths
         fillMap(startPhos);
@@ -197,7 +198,7 @@ void duckDodgers::outputResults() {
         std::cout << pathMarvin[i].row << "," << pathMarvin[i].column << " - ";
     }
     //attempt to place Gandalf
-    if (winner == "Marvin the Martin") {
+    if (winner == "Marvin the Martian") {
         placeGandalf();
     }
 
