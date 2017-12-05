@@ -148,7 +148,7 @@ void duckDodgers::assignValue(Coordinate cell, int value) {
 }
 
 void duckDodgers::placeGandalf() {
-    LinearList<Coordinate> pathMarvinOld = pathMarvin;
+    LinearList<Coordinate> pathMarvinOld = pathMarvin; //Fix assignment to be a deep copy instead of a shallow copy
     for (int i = 0; i < pathMarvinOld.size(); ++i) {
         //Try gandalf in each space on Marvins' Path
         Coordinate gandalfCell = pathMarvinOld[i];
