@@ -112,7 +112,7 @@ void duckDodgers::fillPath(Coordinate start, LinearList<Coordinate>& path) {
 	while (!queue.isEmpty()) {
 		Coordinate nextCell = queue.dequeue();
 		int nextCellValue = map[nextCell.row][nextCell.column];
-		if (nextCellValue == (currentCellValue - 1)) {
+		if (nextCellValue == (currentCellValue - 1) && nextCellValue != -2) {
 			//add to list
 			path.insert(index, nextCell);
 			index++;
@@ -182,7 +182,14 @@ void duckDodgers::outputResults() {
     if(pathDuck.size() == 1 && pathMarvin.size() == 1) {
         std::cout << "Nobody can reach the Illudium Phosdex." << std::endl;
     }
-    else {
+    else if (pathDuck.size() == 1) {
+        std::cout << "Duck Dodgers cannot reach the Illudium Phosdex." << std::endl;
+    }
+    else if(pathMarvin.size() == 1) {
+        std::cout << "Marvin the Martian cannot reach the Illudium Phosdex" << std::endl;
+    }
+    else
+    {
         if (pathDuck.size() != pathMarvin.size()) {
             winner = pathDuck.size() > pathMarvin.size() ? "Marvin the Martian" : "Duck Dodgers";
         }
