@@ -12,7 +12,7 @@ void duckDodgers::getInput() {
     for (int i = 0; i <= numLava - 1; ++i) {
         int row, column;
         std::cin >> row >> column;
-        lavaCells.enqueue(Coordinate(row,column));
+        lavaCells.insert(i, Coordinate(row,column));
     }
 }
 
@@ -24,7 +24,7 @@ void duckDodgers::genMap() {
     }
     int lavaCellsCount = lavaCells.size();
     for (int i = 0; i < lavaCellsCount; ++i) { //Set the values of each lava cell to -2
-        Coordinate lavaLocation = lavaCells.dequeue();
+        Coordinate lavaLocation = lavaCells[i];
         map[lavaLocation.row][lavaLocation.column] = -2;
     }
 
@@ -150,11 +150,12 @@ void duckDodgers::assignValue(Coordinate cell, int value) {
 void duckDodgers::placeGandalf() {
     LinearList<Coordinate> pathMarvinOld = pathMarvin; //Fix assignment to be a deep copy instead of a shallow copy
     LinearList<Coordinate> pathMarvinNew;
+    bool solutionFound = false;
     for (int i = 0; i < pathMarvinOld.size(); ++i) {
         //Try gandalf in each space on Marvins' Path
         Coordinate gandalfCell = pathMarvinOld[i];
         genMap();
-        map[gandalfCell.row][gandalfCell.column] = -2;
+        map[gandalfCell.row][gandalfCell.column] = -2; //treat Gandalf as lava
         //Recalculate Paths
         fillMap(startPhos);
 //        pathMarvin.clear();
@@ -164,26 +165,30 @@ void duckDodgers::placeGandalf() {
         fillPath(startDuck, pathDuck);
         //check to see if Duck wins
         if (pathDuck.size() < pathMarvinNew.size()) {
-            std::cout << "Duck Dodgers summons Gandalf the Grey to cell " << gandalfCell.row << "," << gandalfCell.column;
+            solutionFound = true;
+            std::cout << "Duck Dodgers summons Gandalf the Grey to cell " << gandalfCell.row << "," << gandalfCell.column << std::endl;
             std::cout << "Duck Dodgers' new path:" << std::endl;
             for (int i = 0; i < pathDuck.size(); ++i) {
                 std::cout << pathDuck[i].row << "," << pathDuck[i].column << " - ";
             }
+            std::cout << std::endl;
             std::cout << "Marvin the Martian's new path:" << std::endl;
             for (int i = 0; i < pathMarvinNew.size(); ++i) {
                 std::cout << pathMarvinNew[i].row << "," << pathMarvinNew[i].column << " - ";
             }
-            break;
+            std::cout << std::endl;
+            break; //Comment out this line to print all possible solutions
         }
-        //remove gandalf from current position
-        map[gandalfCell.row][gandalfCell.column] = -1;
     }
-    std::cout << "Gandalf cannot help" << std::endl;
+
+    if (solutionFound == false) {
+        std::cout << "Gandalf cannot help" << std::endl;
+    }
 }
 
 void duckDodgers::outputResults() {
     std::string winner;
-    if(pathDuck.size() == 1 && pathDuck.size() == 1) {
+    if(pathDuck.size() == 1 && pathMarvin.size() == 1) {
         std::cout << "Nobody can reach the Illudium Phosdex." << std::endl;
     }
     else {
@@ -203,6 +208,7 @@ void duckDodgers::outputResults() {
         for (int i = 0; i < pathMarvin.size(); ++i) {
             std::cout << pathMarvin[i].row << "," << pathMarvin[i].column << " - ";
         }
+        std::cout << std::endl;
         //attempt to place Gandalf
         if (winner == "Marvin the Martian") {
             placeGandalf();

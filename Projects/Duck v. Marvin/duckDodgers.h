@@ -45,9 +45,8 @@ public:
             pathMarvin;
 private:
     int numLava;
-    Queue<Coordinate>
-            lavaCells,
-            queue;
+    Queue<Coordinate> queue;
+    LinearList<Coordinate> lavaCells;
 };
 
 #endif //DUCK_V_MARVIN_DUCKDODGERS_H
