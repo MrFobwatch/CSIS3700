@@ -27,11 +27,6 @@ void duckDodgers::genMap() {
         Coordinate lavaLocation = lavaCells[i];
         map[lavaLocation.row][lavaLocation.column] = -2;
     }
-
-//    map[startDuck.row][startDuck.column] = 0;
-
-//    map[startMarvin.row][startMarvin.column] = 0;
-
     map[startPhos.row][startPhos.column] = 0;
 }
 
@@ -94,16 +89,13 @@ void duckDodgers::fillMap(Coordinate startCell) { //Fills in the map starting fr
     enqueueNeighborsCells(startCell, true);
     while (!queue.isEmpty()) {
         Coordinate currentCell = queue.dequeue();
-//        int currentCellValue = map[currentCell.row][currentCell.column];
         int queueSize = queue.size();
         for (int i = 0; i < queueSize; ++i) {
             Coordinate nextCell = queue.dequeue();
             int nextCellValue = map[nextCell.row][nextCell.column];
-//            if ((nextCellValue == -1 || nextCellValue > cellValue)) {
                 assignValue(nextCell, cellValue); //marks as visited by assign values to neighboring cells. assignValue checks for preexisting value
                 queue.enqueue(nextCell);
                 enqueueNeighborsCells(nextCell, true);
-//            }
         }
         cellValue++;
     }
@@ -158,7 +150,6 @@ void duckDodgers::placeGandalf() {
         map[gandalfCell.row][gandalfCell.column] = -2; //treat Gandalf as lava
         //Recalculate Paths
         fillMap(startPhos);
-//        pathMarvin.clear();
         pathMarvinNew.clear();
         fillPath(startMarvin, pathMarvinNew);
         pathDuck.clear();
