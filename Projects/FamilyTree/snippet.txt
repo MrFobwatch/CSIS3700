@@ -9,3 +9,7 @@ for all f {
         set child's parent id
     }
 }
+
+//Need a Sequential search fujnction
+ return the name if found
+ if not add the name to the end of the list and increase the counter +1;

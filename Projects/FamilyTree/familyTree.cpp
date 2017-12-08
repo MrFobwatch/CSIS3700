@@ -3,3 +3,7 @@
 //
 
 #include "familyTree.h"
+
+void familytree::getInput() {
+
+}

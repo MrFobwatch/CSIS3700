@@ -9,6 +9,13 @@
 #include
 
 class familyTree {
+    public:
+        void getInput();
+
+    private:
+        string names[500];  //Array that stores the names of everyone in the tree
+        int father[500];    //Array that stores the indices of fathers
+        int mother[500];    //Array that stores the indices of mothers
 
 };
 
