@@ -184,9 +184,17 @@ void duckDodgers::outputResults() {
     }
     else if (pathDuck.size() == 1) {
         std::cout << "Duck Dodgers cannot reach the Illudium Phosdex." << std::endl;
+        std::cout << "Marvin the Martian's path:" << std::endl;
+        for (int i = 0; i < pathMarvin.size(); ++i) {
+            std::cout << pathMarvin[i].row << "," << pathMarvin[i].column << " - ";
+        }
     }
     else if(pathMarvin.size() == 1) {
         std::cout << "Marvin the Martian cannot reach the Illudium Phosdex" << std::endl;
+        std::cout << "Duck Dodgers' path:" << std::endl;
+        for (int i = 0; i < pathDuck.size(); ++i) {
+            std::cout << pathDuck[i].row << "," << pathDuck[i].column << " - ";
+        }
     }
     else
     {
