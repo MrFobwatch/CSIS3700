@@ -6,16 +6,27 @@
 #define FAMILYTREE_FAMILYTREE_H
 
 #include <iostream>
-#include
+#include <string>
+#include "queue.h"
+
+using std::string;
 
 class familyTree {
     public:
-        void getInput();
+    familyTree();
+
+    void getInput();
+    void queryLoop();
+    void performQuery();
+    void determineRelationship(string p, string q);
+    int nameSearchAdd(string name);   //returns the index of the individual with this name
 
     private:
         string names[500];  //Array that stores the names of everyone in the tree
-        int father[500];    //Array that stores the indices of fathers
-        int mother[500];    //Array that stores the indices of mothers
+        int father[500];    //Array that stores the indices of fathers in names
+        int mother[500];    //Array that stores the indices of mothers in names
+        int counter;
+        int queryCount;
 
 };
 
