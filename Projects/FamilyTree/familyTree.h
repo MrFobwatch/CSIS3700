@@ -19,14 +19,14 @@ class familyTree {
     void queryLoop();
     void performQuery();
     void determineRelationship(string p, string q);
+    int nameSearch(string name);
     int nameSearchAdd(string name);   //returns the index of the individual with this name
 
-    private:
-        string names[500];  //Array that stores the names of everyone in the tree
-        int father[500];    //Array that stores the indices of fathers in names
-        int mother[500];    //Array that stores the indices of mothers in names
-        int counter;
-        int queryCount;
+    string names[500];  //Array that stores the names of everyone in the tree
+    int father[500];    //Array that stores the indices of fathers in names
+    int mother[500];    //Array that stores the indices of mothers in names
+    int counter;
+    int queryCount;
 
 };
 

@@ -24,16 +24,17 @@ void familyTree::getInput() {
         string fatherName, motherName, childName;
         cin >> numChildren; //m
         cin >> fatherName >> motherName;
+        father[counter] = nameSearch(fatherName);
+        mother[counter] = nameSearch(fatherName);
         nameSearchAdd(fatherName);
-        father[counter] = nameSearchAdd(fatherName);
-        mother[counter] = nameSearchAdd(fatherName);
+        father[counter] = nameSearch(motherName);
+        mother[counter] = nameSearch(motherName);
         nameSearchAdd(motherName);
-        father[counter] = nameSearchAdd(motherName);
-        mother[counter] = nameSearchAdd(motherName);
         for (int m = 1; m <= numChildren; m++) {
             cin >> childName;
-            father[counter] = nameSearchAdd(fatherName);
-            mother[counter] = nameSearchAdd(motherName);
+            nameSearchAdd(childName);
+            father[nameSearch(childName)] = nameSearch(fatherName);
+            mother[nameSearch(childName)] = nameSearch(motherName);
         }
 
     }
@@ -52,19 +53,24 @@ void familyTree::determineRelationship(string p, string q) {
 
 }
 
-int familyTree::nameSearchAdd(string name) {
-    bool found = false;
+
+int familyTree::nameSearch(string name) {
     for (int i = 0; i < 500; i++) {
         if(name == names[i]) {
-            found = true;
             return i;
         }
     }
-    if (!found) {
-        names[counter] = name;
-        counter++;
-        return -1;
-    }
-
+    return -1;
 }
 
+int familyTree::nameSearchAdd(string name) {
+    int nameIndex = nameSearch(name);
+    if (nameIndex == -1) { //not in list then add
+        names[counter] = name;
+        counter++;
+    }
+    else
+        return nameIndex;
+
+
+}
