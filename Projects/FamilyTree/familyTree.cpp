@@ -42,10 +42,15 @@ void familyTree::getInput() {
 }
 
 void familyTree::queryLoop() {
+    for (int i = 0; i < queryCount; i++) {
+        performQuery();
+    }
 
 }
 
 void familyTree::performQuery() {
+    string personA, personB;
+    cin >> personA >> personB;
 
 }
 
