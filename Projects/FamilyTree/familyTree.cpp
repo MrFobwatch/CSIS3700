@@ -12,6 +12,11 @@ familyTree::familyTree() {
         mother[i] = 0;
         father[i] = 0;
     }
+    for (int j = 0; j < 500; ++j) {
+        familyInfo[j][0] = 0;
+        familyInfo[j][1] = 0;
+    }
+    queue.clear();
 }
 
 void familyTree::getInput() {
