@@ -56,10 +56,23 @@ void familyTree::queryLoop() {
 void familyTree::performQuery() {
     string personA, personB;
     cin >> personA >> personB;
-
+    determineDescendance(personA, personB);
 }
 
-void familyTree::determineRelationship(string p, string q) {
+void familyTree::determineDescendance(string p, string q) { //Incorrect Code
+//    int index = 0;
+//    queue.enqueue(index);
+//    string qfather = names[father[nameSearch(q)]];
+//    string qmother = names[mother[nameSearch(q)]];
+//    string pfather = names[father[nameSearch(p)]];
+//    string pmother = names[mother[nameSearch(p)]];
+    if(nameSearch(p) >= 0 && nameSearch(q) >= 0) {
+        cout << "Related" << std::endl;
+    }
+    else if (nameSearch(p) == -1 || nameSearch(q) == -1){
+        cout << "No relation" << std::endl;
+    }
+
 
 }
 
