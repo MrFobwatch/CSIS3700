@@ -12,7 +12,7 @@ void duckDodgers::getInput() {
     for (int i = 0; i <= numLava - 1; ++i) {
         int row, column;
         std::cin >> row >> column;
-        lavaCells.insert(i, Coordinate(row,column));
+        lavaCells.insert(i, Coordinate(row, column));
     }
 }
 
@@ -33,51 +33,50 @@ void duckDodgers::genMap() {
 void duckDodgers::enqueueNeighborsCells(Coordinate cell, bool assignVal) {
     //conditionals only enqueue if the cell value is -1
     //also assigns values of enqueued cells
-	//assignVal determines if values are assigned
+    //assignVal determines if values are assigned
 
     if (map[cell.row - 1][cell.column] == -1 || !assignVal) {
         queue.enqueue(Coordinate((cell.row - 1), (cell.column))); //north
         if (assignVal)
-        	assignValue(Coordinate((cell.row - 1), (cell.column)), map[cell.row][cell.column] + 1);
+            assignValue(Coordinate((cell.row - 1), (cell.column)), map[cell.row][cell.column] + 1);
     }
     if ((cell.column == 1) || (cell.column % 2 == 0)) { //Odd columns have north east and north west
         if (map[cell.row - 1][cell.column + 1] == -1 || !assignVal) {
             queue.enqueue(Coordinate((cell.row - 1), ((cell.column) + 1))); //north east
             if (assignVal)
-            	assignValue(Coordinate((cell.row - 1), ((cell.column) + 1)), map[cell.row][cell.column] + 1);
+                assignValue(Coordinate((cell.row - 1), ((cell.column) + 1)), map[cell.row][cell.column] + 1);
         }
         if (map[cell.row - 1][cell.column - 1] == -1 || !assignVal) {
             queue.enqueue(Coordinate((cell.row - 1), ((cell.column) - 1))); //north west
             if (assignVal)
-            	assignValue(Coordinate((cell.row - 1), ((cell.column) - 1)), map[cell.row][cell.column] + 1);
+                assignValue(Coordinate((cell.row - 1), ((cell.column) - 1)), map[cell.row][cell.column] + 1);
         }
-    }
-    else {
+    } else {
         if (map[cell.row + 1][cell.column + 1] == -1 || !assignVal) {
             queue.enqueue(Coordinate((cell.row + 1), ((cell.column) + 1))); //south east
             if (assignVal)
-            	assignValue(Coordinate((cell.row + 1), ((cell.column) + 1)), map[cell.row][cell.column] + 1);
+                assignValue(Coordinate((cell.row + 1), ((cell.column) + 1)), map[cell.row][cell.column] + 1);
         }
         if (map[cell.row + 1][cell.column - 1] == -1 || !assignVal) {
             queue.enqueue(Coordinate((cell.row + 1), ((cell.column) - 1))); //south west
             if (assignVal)
-            	assignValue(Coordinate((cell.row + 1), ((cell.column) - 1)), map[cell.row][cell.column] + 1);
+                assignValue(Coordinate((cell.row + 1), ((cell.column) - 1)), map[cell.row][cell.column] + 1);
         }
     }
     if (map[cell.row][cell.column + 1] == -1 || !assignVal) {
         queue.enqueue(Coordinate((cell.row), ((cell.column) + 1))); //east
         if (assignVal)
-        	assignValue(Coordinate((cell.row), ((cell.column) + 1)), map[cell.row][cell.column] + 1);
+            assignValue(Coordinate((cell.row), ((cell.column) + 1)), map[cell.row][cell.column] + 1);
     }
     if (map[cell.row][cell.column - 1] == -1 || !assignVal) {
         queue.enqueue(Coordinate((cell.row), ((cell.column) - 1))); //west
         if (assignVal)
-        	assignValue(Coordinate((cell.row), ((cell.column) - 1)), map[cell.row][cell.column] + 1);
+            assignValue(Coordinate((cell.row), ((cell.column) - 1)), map[cell.row][cell.column] + 1);
     }
     if (map[cell.row + 1][cell.column] == -1 || !assignVal) {
         queue.enqueue(Coordinate((cell.row + 1), ((cell.column)))); //south
         if (assignVal)
-        	assignValue(Coordinate((cell.row + 1), ((cell.column))), map[cell.row][cell.column] + 1);
+            assignValue(Coordinate((cell.row + 1), ((cell.column))), map[cell.row][cell.column] + 1);
     }
 }
 
@@ -93,41 +92,42 @@ void duckDodgers::fillMap(Coordinate startCell) { //Fills in the map starting fr
         for (int i = 0; i < queueSize; ++i) {
             Coordinate nextCell = queue.dequeue();
             int nextCellValue = map[nextCell.row][nextCell.column];
-                assignValue(nextCell, cellValue); //marks as visited by assign values to neighboring cells. assignValue checks for preexisting value
-                queue.enqueue(nextCell);
-                enqueueNeighborsCells(nextCell, true);
+            assignValue(nextCell,
+                        cellValue); //marks as visited by assign values to neighboring cells. assignValue checks for preexisting value
+            queue.enqueue(nextCell);
+            enqueueNeighborsCells(nextCell, true);
         }
         cellValue++;
     }
 
 }
 
-void duckDodgers::fillPath(Coordinate start, LinearList<Coordinate>& path) {
-	path.insert(0, start);
+void duckDodgers::fillPath(Coordinate start, LinearList<Coordinate> &path) {
+    path.insert(0, start);
     int index = 1;
-	int currentCellValue = map[start.row][start.column];
-	//Look at neighbor
-	enqueueNeighborsCells(start, false);
-	//find one less
-	while (!queue.isEmpty()) {
-		Coordinate nextCell = queue.dequeue();
-		int nextCellValue = map[nextCell.row][nextCell.column];
-		if (nextCellValue == (currentCellValue - 1) && nextCellValue != -2) {
-			//add to list
-			path.insert(index, nextCell);
-			index++;
+    int currentCellValue = map[start.row][start.column];
+    //Look at neighbor
+    enqueueNeighborsCells(start, false);
+    //find one less
+    while (!queue.isEmpty()) {
+        Coordinate nextCell = queue.dequeue();
+        int nextCellValue = map[nextCell.row][nextCell.column];
+        if (nextCellValue == (currentCellValue - 1) && nextCellValue != -2) {
+            //add to list
+            path.insert(index, nextCell);
+            index++;
             queue.clear();
-			currentCellValue = nextCellValue;
-			//look at neighbors of newly added cell
-			enqueueNeighborsCells(nextCell, false);
-		}
-		//repeat until newly added cell == 0 (goal)
-		if (currentCellValue == 0) {
-			queue.clear();
-		}
+            currentCellValue = nextCellValue;
+            //look at neighbors of newly added cell
+            enqueueNeighborsCells(nextCell, false);
+        }
+        //repeat until newly added cell == 0 (goal)
+        if (currentCellValue == 0) {
+            queue.clear();
+        }
 
-		//if no neighbor is 1 less or (something I can't recall) no path
-	}
+        //if no neighbor is 1 less or (something I can't recall) no path
+    }
 
 }
 
@@ -157,7 +157,8 @@ void duckDodgers::placeGandalf() {
         //check to see if Duck wins
         if (pathDuck.size() < pathMarvinNew.size()) {
             solutionFound = true;
-            std::cout << "Duck Dodgers summons Gandalf the Grey to cell " << gandalfCell.row << "," << gandalfCell.column << std::endl;
+            std::cout << "Duck Dodgers summons Gandalf the Grey to cell " << gandalfCell.row << ","
+                      << gandalfCell.column << std::endl;
             std::cout << "Duck Dodgers' new path:" << std::endl;
             for (int i = 0; i < pathDuck.size(); ++i) {
                 std::cout << pathDuck[i].row << "," << pathDuck[i].column << " - ";
@@ -179,29 +180,24 @@ void duckDodgers::placeGandalf() {
 
 void duckDodgers::outputResults() {
     std::string winner;
-    if(pathDuck.size() == 1 && pathMarvin.size() == 1) {
+    if (pathDuck.size() == 1 && pathMarvin.size() == 1) {
         std::cout << "Nobody can reach the Illudium Phosdex." << std::endl;
-    }
-    else if (pathDuck.size() == 1) {
+    } else if (pathDuck.size() == 1) {
         std::cout << "Duck Dodgers cannot reach the Illudium Phosdex." << std::endl;
         std::cout << "Marvin the Martian's path:" << std::endl;
         for (int i = 0; i < pathMarvin.size(); ++i) {
             std::cout << pathMarvin[i].row << "," << pathMarvin[i].column << " - ";
         }
-    }
-    else if(pathMarvin.size() == 1) {
+    } else if (pathMarvin.size() == 1) {
         std::cout << "Marvin the Martian cannot reach the Illudium Phosdex" << std::endl;
         std::cout << "Duck Dodgers' path:" << std::endl;
         for (int i = 0; i < pathDuck.size(); ++i) {
             std::cout << pathDuck[i].row << "," << pathDuck[i].column << " - ";
         }
-    }
-    else
-    {
+    } else {
         if (pathDuck.size() != pathMarvin.size()) {
             winner = pathDuck.size() > pathMarvin.size() ? "Marvin the Martian" : "Duck Dodgers";
-        }
-        else {
+        } else {
             winner = "Marvin the Martian";
         }
         std::cout << winner << " reaches the Illudium Phosdex first." << std::endl;
@@ -220,7 +216,6 @@ void duckDodgers::outputResults() {
             placeGandalf();
         }
     }
-
 
 
 }
